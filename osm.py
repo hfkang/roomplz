@@ -81,16 +81,24 @@ def nitialize():
 
 def organize(building_data):
    
-    master = [[[] for i in range(16)] for j in range(7)]
+    master = [[{} for i in range(16)] for j in range(7)]
 
     #at this stage we take the all of the room data for a whole building and compile it.
     # we're also inverting the data structure from 16 by 7 to 7 by 16 because it's a more sensible hierarchy
+    #change iteration to by day from 22 to 7.
     for room_key in building_data: 
         room = building_data[room_key] 
         for hour in range(16): #get a one hour block across a week
             for day in range(7):  # get a particular block in a week  
                 if(room[hour][day]=="Empty"): 
-                    master[day][hour].append(room_key) #append room name to directory of free rooms aka master if the room is empty at that tiem
+                    if hour < 16: 
+                        #check next hour to see if open
+                        if room_key in master[day][hour+1]:
+                            #THe room is free in the next hour. increment duration
+                            master[day][hour][room_key] = master[day][hour+1][room_key]+1 
+                    else:  
+                        master[day][hour][room_key] = 1
+                   # master[day][hour].append(room_key) #append room name to directory of free rooms aka master if the room is empty at that tiem
     return master 
 
 def download_BA(): 
