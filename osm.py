@@ -1,39 +1,20 @@
 import requests, pickle, datetime,sys
-from bs4 import BeautifulSoup, SoupStrainer
+
+
 def store_organized(building_name, building_data): 
     
     organized = organize(building_data)
     with open(building_name+"_organized","wb") as f:
-        pickle.dump(organized, f) 
+        pickle.dump(organized, f)
+    
+    print(organized[4][13-7])  
 
 def main(args):
-    #download_BA()   #only download when you actually need to update the data   
-    building = "BA"
-    time = "14" 
-    print("You requested a room in "+building+" at "+time) 
-        
-    """
-    with open("BA_organized",'rb') as f:
-        availability = pickle.load(f)
-    print(availability)     
     
-    if(building == "BA"):
-        if(True):
-             print(availability[1][(int(time))-7]) 
-        else: 
-            print("invalid time")
-    else:
-        print("Invalid buidling") 
-        
-    """
-    download_BA() 
-    with open("BA_fulldata",'rb') as f:
-        BA_data = pickle.load(f)
-       
-    #preorganized data in format [hour][day]
-    room = BA_data['2155']
-    for hour in room:
-        print(hour[3]) 
+    with open("BA_fulldata","rb") as f:
+        BA_data = pickle.load(f) 
+    store_organized("BA",BA_data) 
+ 
         
     
 def nitialize():
@@ -81,21 +62,25 @@ def nitialize():
 
 def organize(building_data):
    
-    master = [[{} for i in range(16)] for j in range(7)]
+    master = [[dict() for i in range(16)] for j in range(7)]
 
     #at this stage we take the all of the room data for a whole building and compile it.
     # we're also inverting the data structure from 16 by 7 to 7 by 16 because it's a more sensible hierarchy
     #change iteration to by day from 22 to 7.
-    for room_key in building_data: 
+    for room_key in building_data:
+        print("compiling data for " + room_key)  
         room = building_data[room_key] 
-        for hour in range(16): #get a one hour block across a week
-            for day in range(7):  # get a particular block in a week  
+        for day in range(7): #get a one hour block across a week
+            for hour in range(15,-1,-1):  # get a particular block in a week  
                 if(room[hour][day]=="Empty"): 
-                    if hour < 16: 
+                    if hour < 15: 
                         #check next hour to see if open
                         if room_key in master[day][hour+1]:
                             #THe room is free in the next hour. increment duration
-                            master[day][hour][room_key] = master[day][hour+1][room_key]+1 
+                            master[day][hour][room_key] = master[day][hour+1][room_key]+1
+                        else:
+                            master[day][hour][room_key] = 1
+                   
                     else:  
                         master[day][hour][room_key] = 1
                    # master[day][hour].append(room_key) #append room name to directory of free rooms aka master if the room is empty at that tiem
