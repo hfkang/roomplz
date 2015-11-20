@@ -1,5 +1,5 @@
 import requests, pickle, datetime,sys
-
+from bs4 import BeautifulSoup
 
 def store_organized(building_name, building_data): 
     
@@ -11,54 +11,47 @@ def store_organized(building_name, building_data):
 
 def main(args):
     
-    with open("BA_fulldata","rb") as f:
-        BA_data = pickle.load(f) 
-    store_organized("BA",BA_data) 
- 
+    nitialize()  
         
     
 def nitialize():
     #Pulls original room and building name data from OSM website. No longer needed if using Pickles
-    osm_url = 'http://osm.utoronto.ca/bookings/f?p=200:3:::NO::P3_BLDG:BA'
+    osm_url = 'http://osm.utoronto.ca/bookings/f?p=200:3:::NO::P3_BLDG:'
 
     base_url = 'http://osm.utoronto.ca/bookings/f?p=200:5:284129947570601::::P5_BLDG,P5_ROOM,P5_CALENDAR_DATE:'
-    testfile = open('osm.utoronto.ca/bookings/osm.html','r').read()
+    
+    testfile = requests.get(osm_url).text
+    
     soup = BeautifulSoup(testfile,'lxml')
 
 
      #Extract Building Names    
     building_table = soup.find(None,id='P3_BLDG')
     buildings = building_table.findAll('option')
-    building_list = []
+    building_list = {}
     for b in buildings[1:]:
-        building_list.append(b['value'])
+        building_list[b['value']] = [] #setup dictionary 
     print(building_list)
-    with open("BuildingList",'rb') as f:
-        pickle.dump(building_list,f)
  
+    for building in building_list:
+        url = osm_url+building
+        print(url)
+        html = requests.get(url).text
+        soup = BeautifulSoup(html,'lxml')
+        links = soup.find(None, id='P3_ROOM') 
+        rooms = links.findAll('option')
+        room_list = []  
+        for room in rooms[1:]:
+            room_list.append(room['value'])
+        print(room_list)
+        building_list[building].extend(room_list)
+    
+    print(building_list) 
+    with open("BuildingandRooms","wb") as f:
+        pickle.dump(building_list, f)
 
-    #Extract Room Names for BA 
-    links = soup.find(None, id='P3_ROOM') 
-    rooms = links.findAll('option')
-    room_list = []  
-    for room in rooms[1:]:
-        room_list.append(room['value'])
-    print(room_list)
-
-    #Save the file. Nomally i'd do this in a loop over all buildings, but i can probably do manually and for select
-    #buildings for now 
-    pickle.dump(room_list, open( "BA.p", "wb" ) )
-
-
-    loop_room(room_list) 
-"""
-    test_url = base_url + "BA," + rooms[4]['value']+ ",20151115"
-
-    print(test_url)
-
-    r = requests.get(test_url).text
-    parse_room(r)
-"""
+   
+  
 
 def organize(building_data):
    
