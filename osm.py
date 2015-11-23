@@ -1,4 +1,4 @@
-import requests, pickle, datetime,sys
+import requests, pickle, datetime,sys,json 
 from bs4 import BeautifulSoup
 
 def store_organized(building_name, building_data): 
@@ -11,9 +11,10 @@ def store_organized(building_name, building_data):
 
 def main(args):
     
-    nitialize()  
-        
+    if "-d" == args[1]:
+        download_BA()   
     
+
 def nitialize():
     #Pulls original room and building name data from OSM website. No longer needed if using Pickles
     osm_url = 'http://osm.utoronto.ca/bookings/f?p=200:3:::NO::P3_BLDG:'
@@ -81,10 +82,10 @@ def organize(building_data):
 
 def download_BA(): 
 
-    with open("BA.p", "rb") as f:
+    with open("BuildingandRooms", "rb") as f:
         room_list = pickle.load(f)
     
-    BA_data = loop_room(room_list) 
+    BA_data = loop_room(room_list['BA']) 
     with open("BA_fulldata", 'wb') as f:
         pickle.dump(BA_data,f) 
     store_organized("BA",BA_data)  
