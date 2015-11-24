@@ -20,6 +20,12 @@ def construct_page(q_s):
     ct = datetime.datetime.now() 
     time = ct.hour  
     day = ct.weekday() 
+    building = 'BA'
+    if q_s == "GB":
+        building = "GB"
+    if q_s == "SF":
+        building = "SF" 
+
  
     html_start = """<!DOCTYPE HTML> \n
     <html>"""
@@ -53,10 +59,10 @@ def construct_page(q_s):
     body = """<body> 
                 <section id = \"banner\"> 
                     <h2><a href =/M7RYRBm.gif><strong>I can haz room?</strong></a></h2>"""
-    body +="""<p>You requested a room in BA on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
+    body +="""<p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     body +="""<ul class="actions"> """
                 
-    rooms = room_plz("BA",day,time)
+    rooms = room_plz(building,day,time)
     for key in sorted(rooms):
         body += """<li><a href="#" class="button special"><p>"""+key +"""<br>""" + str(rooms[key]) +""" hr</p></a></li>\n"""                
     body += """</ul> """
@@ -66,7 +72,7 @@ def construct_page(q_s):
     body += """<p>These rooms are available in the next hour:</p>"""
     body +="""<ul class="actions"> """
                 
-    rooms = room_plz("BA",day,time+1)
+    rooms = room_plz(building,day,time+1)
     for key in sorted(rooms):
         body += """<li><a href="#" class="button special">"""+key+"""<br>"""+str(rooms[key])+""" hr</a></li>\n"""                
     body += """</ul> </section"""
