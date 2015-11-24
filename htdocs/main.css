@@ -2775,7 +2775,7 @@
 
 		.wrapper.style1 {
 			background-color: #00cdcf;
-			color: #ffffff;
+			color: #000000
 		}
 
 			.wrapper.style1 input, .wrapper.style1 select, .wrapper.style1 textarea {
@@ -2966,7 +2966,7 @@
 			}
 
 			.wrapper.style1 ul.alt li {
-				border-top-color: rgba(255, 255, 255, 0.25);
+				border-top-color: rgba(0,0,0, 0.25);
 			}
 
 			.wrapper.style1 header h2, .wrapper.style1 header h3 {
