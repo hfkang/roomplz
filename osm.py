@@ -1,6 +1,6 @@
 import requests, pickle, datetime,sys,json 
 from bs4 import BeautifulSoup
-
+#comment
 def store_organized(building_name, building_data): 
     
     organized = organize(building_data)
