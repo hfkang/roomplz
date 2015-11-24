@@ -1,2 +1,4 @@
 # roomplz
-scrape osm website
+Scrape the ACE booking site and compile a "database" of available rooms on campus. 
+
+
