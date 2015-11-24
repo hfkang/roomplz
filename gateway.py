@@ -58,7 +58,8 @@ def construct_page(q_s):
     
     body = """<body> 
                 <section id = \"banner\"> 
-                    <h2><a href =/M7RYRBm.gif><strong>I can haz room?</strong></a></h2>"""
+                    <h2><a href =/M7RYRBm.gif><strong>I can haz room?</strong></a></h2>
+                    <h3><a href =/?BA>BA </a><a href =/?GB>GB </a><a href=/?SF>SF </a></h3>"""
     body +="""<p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     body +="""<ul class="actions"> """
                 
@@ -75,17 +76,8 @@ def construct_page(q_s):
     rooms = room_plz(building,day,time+1)
     for key in sorted(rooms):
         body += """<li><a href="#" class="button special">"""+key+"""<br>"""+str(rooms[key])+""" hr</a></li>\n"""                
-    body += """</ul> </section"""
+    body += """</ul> </section></body>"""
     
-    body+="""
-        <div class ="6u 12u$(small)"> 
-        <input type="checkbox" id="BA" name="BA">
-        before::
-        <label for="BA">BA</label>
-        </div> 
-        
-        </body>"""
-    body += q_s
 
     html_end = """</html>"""
     
