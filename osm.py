@@ -12,7 +12,15 @@ def store_organized(building_name, building_data):
 def main(args):
     
     if "-d" == args[1]:
-        download_BA()   
+        if "GB" == args[2]:
+            print("Will download GB")
+            download("GB")
+        if "BA" == args[2]:
+            print("Will download BA")
+            download("BA")
+        if "SF" == args[2]:
+            print("Will download SF")
+            download("SF")   
     
 
 def nitialize():
@@ -80,20 +88,20 @@ def organize(building_data):
                    # master[day][hour].append(room_key) #append room name to directory of free rooms aka master if the room is empty at that tiem
     return master 
 
-def download_BA(): 
+def download(building_name): 
 
     with open("Building.json", "r") as f:
         room_list = json.load(f)
     
-    BA_data = loop_room(room_list['BA']) 
-    with open("BA_fulldata", 'wb') as f:
-        pickle.dump(BA_data,f) 
-    store_organized("BA",BA_data)  
+    data = loop_room(building_name,room_list[building_name]) 
+    with open(building_name+"_fulldata", 'wb') as f:
+        pickle.dump(data,f) 
+    store_organized(building_name,data)  
 
-def loop_room(room_list):
+def loop_room(building,room_list):
     #Iterates over the list of rooms in BA, and scrapes the booking data.
     base_url = 'http://osm.utoronto.ca/bookings/f?p=200:5:284129947570601::::P5_BLDG,P5_ROOM,P5_CALENDAR_DATE:'
-    building = 'BA'
+    building = building
     i = datetime.datetime.now()
     date = i.strftime("%Y%m%d")
     

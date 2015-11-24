@@ -8,16 +8,15 @@ def room_plz(b,d,t):
     response = [] 
 
 
-    with open("BA_organized",'rb') as f:
+    with open(b+"_organized",'rb') as f:
         availability = pickle.load(f)
 
 
-    if(building == "BA"):
-        if time>=7 and time <= 22:
-            response = availability[d][time-7]
+    if time>=7 and time <= 22:
+        response = availability[d][time-7]
     return response #response is a dictionary whose keys are the room numbers, and values are the duration 
 
-def construct_page():
+def construct_page(q_s):
     ct = datetime.datetime.now() 
     time = ct.hour  
     day = ct.weekday() 
@@ -75,10 +74,12 @@ def construct_page():
     body+="""
         <div class ="6u 12u$(small)"> 
         <input type="checkbox" id="BA" name="BA">
+        before::
         <label for="BA">BA</label>
         </div> 
         
         </body>"""
+    body += q_s
 
     html_end = """</html>"""
     
@@ -86,7 +87,8 @@ def construct_page():
 
 def application (environ, start_response):
     os.chdir('/var/www/html') 
-    text = construct_page() 
+    req = Request(environ)
+    text = construct_page(req.query_string) 
     resp = Response(body=text)
     resp.content_type = 'text/html'
     return resp(environ,start_response) 
