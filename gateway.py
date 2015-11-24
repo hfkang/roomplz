@@ -59,6 +59,7 @@ def construct_page(q_s):
     body = """<body> 
                 <section id = \"banner\"> 
                     <h2><a href =/M7RYRBm.gif><strong>I can haz room?</strong></a></h2></section>
+                <section id = "one" class="wrapper special">
                     <h1><a href =/?BA>BA </a><a href =/?GB>GB </a><a href=/?SF>SF </a></h1>"""
     body +="""<p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     body +="""<ul class="actions"> """
@@ -76,7 +77,7 @@ def construct_page(q_s):
     rooms = room_plz(building,day,time+1)
     for key in sorted(rooms):
         body += """<li><a href="#" class="button special">"""+key+"""<br>"""+str(rooms[key])+""" hr</a></li>\n"""                
-    body += """</ul></body>"""
+    body += """</ul></section></body>"""
     
 
     html_end = """</html>"""
