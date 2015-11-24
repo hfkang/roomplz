@@ -70,9 +70,14 @@ def construct_page():
     rooms = room_plz("BA",day,time+1)
     for key in sorted(rooms):
         body += """<li><a href="#" class="button special">"""+key+"""<br>"""+str(rooms[key])+""" hr</a></li>\n"""                
-    body += """</ul> """
+    body += """</ul> </section"""
     
-    body+="""</section>
+    body+="""
+        <div class ="6u 12u$(small)"> 
+        <input type="checkbox" id="BA" name="BA">
+        <label for="BA">BA</label>
+        </div> 
+        
         </body>"""
 
     html_end = """</html>"""
