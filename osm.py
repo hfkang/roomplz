@@ -82,8 +82,8 @@ def organize(building_data):
 
 def download_BA(): 
 
-    with open("BuildingandRooms", "rb") as f:
-        room_list = pickle.load(f)
+    with open("Building.json", "rb") as f:
+        room_list = json.load(f)
     
     BA_data = loop_room(room_list['BA']) 
     with open("BA_fulldata", 'wb') as f:
