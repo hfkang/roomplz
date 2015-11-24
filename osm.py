@@ -82,7 +82,7 @@ def organize(building_data):
 
 def download_BA(): 
 
-    with open("Building.json", "rb") as f:
+    with open("Building.json", "r") as f:
         room_list = json.load(f)
     
     BA_data = loop_room(room_list['BA']) 
