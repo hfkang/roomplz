@@ -16,6 +16,7 @@ def room_plz(b,d,t):
         response = availability[d][time-7]
     return response #response is a dictionary whose keys are the room numbers, and values are the duration 
 
+#Generates the html response
 def construct_page(q_s):
     ct = datetime.datetime.now() 
     time = ct.hour  
