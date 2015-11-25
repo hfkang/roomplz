@@ -54,7 +54,8 @@ def construct_page(q_s):
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
                 <meta name="msapplication-TileColor" content="#da532c">
                 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-                <meta name="theme-color" content="#ffffff">  
+                <meta name="theme-color" content="#ffffff"> 
+                <script src ="analytics.js"></script> 
             </head>"""
     
     body = """<body> 
