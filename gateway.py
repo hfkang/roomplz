@@ -69,7 +69,7 @@ def construct_page(q_s):
     
     body = """<body> 
                 <section id = \"banner\"> 
-                    <h2><a href =/M7RYRBm.gif><strong>I are beta server</strong></a></h2></section>
+                    <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I are beta server</strong></a></h2></section>
                 <section id = "one" class="wrapper special">
                     <h2><a href =/?BA>BA </a><a href =/?GB>GB </a><a href=/?SF>SF </a></h2>"""
     body +="""<p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
