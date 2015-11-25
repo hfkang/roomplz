@@ -31,7 +31,7 @@ def construct_page(q_s):
     <html>"""
     
     head = """<head> 
-                <title>Test Server. Plz ignore</title>
+                <title>Engsci dkm</title>
                 <meta charset = \"utf-8\" /> 
                 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
                 <link rel="stylesheet" href="/main.css" />
@@ -66,7 +66,7 @@ def construct_page(q_s):
                 
     rooms = room_plz(building,day,time)
     for key in sorted(rooms):
-        body += """<li><a href="#" class="button special"><p>"""+key +""":""" + str(rooms[key]) +""" hr</p></a></li>\n"""                
+        body += """<li><a href="#" class="button special"><p>"""+key +""" : """ + str(rooms[key]) +""" hr</p></a></li>\n"""                
     body += """</ul> """
     if len(rooms) == 0:
         body += """<p>Sorry! No rooms are available right now.</p>"""
@@ -76,7 +76,7 @@ def construct_page(q_s):
                 
     rooms = room_plz(building,day,time+1)
     for key in sorted(rooms):
-        body += """<li><a href="#" class="button special">"""+key+""":"""+str(rooms[key])+""" hr</a></li>\n"""                
+        body += """<li><a href="#" class="button special">"""+key+""" : """+str(rooms[key])+""" hr</a></li>\n"""                
     body += """</ul></section></body>"""
     
 
