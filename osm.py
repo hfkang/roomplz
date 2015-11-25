@@ -21,7 +21,10 @@ def main(args):
         if "SF" == args[2]:
             print("Will download SF")
             download("SF")   
-    
+    if "-engineering" == args[1]:
+            download("BA")
+            download("GB")
+            download("SF")    
 
 def nitialize():
     #Pulls original room and building name data from OSM website. No longer needed if using Pickles
