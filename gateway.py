@@ -1,6 +1,7 @@
 import platform, sys, os, datetime,pickle 
 from webob import Response,Request
 
+#Pulls the room data from the archived dictionary
 def room_plz(b,d,t):
     building = b
     time = t  
