@@ -60,7 +60,7 @@ def construct_page(q_s):
                 <section id = \"banner\"> 
                     <h2><a href =/M7RYRBm.gif><strong>I can haz room?</strong></a></h2></section>
                 <section id = "one" class="wrapper special">
-                    <h1><a href =/?BA>BA </a><a href =/?GB>GB </a><a href=/?SF>SF </a></h1>"""
+                    <h2><a href =/?BA>BA </a><a href =/?GB>GB </a><a href=/?SF>SF </a></h2>"""
     body +="""<p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     body +="""<ul class="actions"> """
                 
