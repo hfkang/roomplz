@@ -1832,7 +1832,7 @@
             display: inline-block;
             height: 2.85em;
             line-height: 2.95em;
-            padding: 1.5 1.5em;
+            padding: 0 1.5em;
             text-align: center;
             text-decoration: none;
             text-transform: uppercase;
@@ -1907,7 +1907,7 @@
             input[type="button"],
             button,
             .button {
-                padding: 0;
+                padding: 0, 1.5em;
             }
 
         }
@@ -2871,7 +2871,7 @@
 
                 .wrapper.style1 input[type="submit"].special,
                 .wrapper.style1 input[type="reset"].special,
-                .wrapper.style1 input[type="button"].special,
+                .wrapper.style1 input[type="autton"].special,
                 .wrapper.style1 button.special,
                 .wrapper.style1 .button.special {
                     background-color: #009a9c;
