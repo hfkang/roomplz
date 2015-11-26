@@ -103,7 +103,7 @@ def application (environ, start_response):
     text = construct_page(req.query_string) 
     resp = Response(body=text)
     resp.content_type = 'text/html'
-    resp.set_cookie("auth",value="beta_uprising",overwrite=True)
+    resp.set_cookie("auth",value="beta uprising",overwrite=True,httponly=True,max_age=2000000)
     return resp(environ,start_response) 
 
 
