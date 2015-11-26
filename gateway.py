@@ -174,7 +174,7 @@ def application (environ, start_response):
             resp.set_cookie("auth",value="beta uprising",overwrite=True,httponly=True,max_age=2000000)
         else:
             text = login()
-    resp.body = text
+    resp.text = text
     resp.content_type = 'text/html'
     return resp(environ,start_response) 
 
