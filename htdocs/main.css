@@ -1897,7 +1897,7 @@
             pointer-events: none;
             opacity: 1;
             background-color: #164F8C;
-            
+            color: #F9F2FF 
         }
 
         @media screen and (max-width: 480px) {
@@ -1987,7 +1987,7 @@
             input[type="button"].special:hover,
             button.special:hover,
             .button.special:hover {
-                background-color: #00e6e9;
+                background-color: #59a6ff;
             }
 
             input[type="submit"].special:active,
@@ -1995,7 +1995,7 @@
             input[type="button"].special:active,
             button.special:active,
             .button.special:active {
-                background-color: #00b4b5;
+                background-color: #0a90d8;
             }
 
 /* Form */
