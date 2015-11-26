@@ -1896,7 +1896,7 @@
             -ms-pointer-events: none;
             pointer-events: none;
             opacity: 1;
-            background-color: #16B1FF;
+            background-color: #1185Bf;
             color: #F9F2FF 
         }
 
@@ -1976,7 +1976,7 @@
         input[type="button"].special,
         button.special,
         .button.special {
-            background-color: #16B1FF;
+            background-color: #1185BF;
             color: #f9f2ff !important;
             border-radius: 0.5em;
             
@@ -3331,7 +3331,7 @@
                 .wrapper.style3 input[type="button"].special,
                 .wrapper.style3 button.special,
                 .wrapper.style3 .button.special {
-                    background-color: #00cdcf;
+                    background-color: #1185BF;
                     color: #ffffff !important;
                 }
 
@@ -3340,7 +3340,7 @@
                     .wrapper.style3 input[type="button"].special:hover,
                     .wrapper.style3 button.special:hover,
                     .wrapper.style3 .button.special:hover {
-                        background-color: #00e6e9;
+                        background-color: #00A4E5;
                     }
 
                     .wrapper.style3 input[type="submit"].special:active,
@@ -3348,7 +3348,7 @@
                     .wrapper.style3 input[type="button"].special:active,
                     .wrapper.style3 button.special:active,
                     .wrapper.style3 .button.special:active {
-                        background-color: #00b4b5;
+                        background-color: #0E73A5;
                     }
 
             .wrapper.style3 label {
@@ -3516,7 +3516,7 @@
 /* Banner */
 
     #banner {
-        background-color: #16B1FF;
+        background-color: #1185BF;
         color: #F9F2FF;
         padding: 8em 0 6em 0;
         text-align: center;
