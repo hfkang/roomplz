@@ -163,7 +163,7 @@ def application (environ, start_response):
     req = Request(environ)
     resp = Response()
     cookies = req.cookies
-    if 'auth' in cookies and cookies['auth'] == 'beta uprising':
+    if 'auth' in cookies and cookies['auth'] == 'potato':
         text = construct_page(req.query_string) 
 
     else: 
