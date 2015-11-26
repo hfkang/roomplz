@@ -1896,7 +1896,7 @@
             -ms-pointer-events: none;
             pointer-events: none;
             opacity: 1;
-            background-color: #164F8C;
+            background-color: #16B1FF;
             color: #F9F2FF 
         }
 
@@ -1976,7 +1976,7 @@
         input[type="button"].special,
         button.special,
         .button.special {
-            background-color: #149FEf;
+            background-color: #16B1FF;
             color: #f9f2ff !important;
             border-radius: 0.5em;
             
@@ -1995,7 +1995,7 @@
             input[type="button"].special:active,
             button.special:active,
             .button.special:active {
-                background-color: #107CB2;
+                background-color: #149FE5;
             }
 
 /* Form */
@@ -3515,7 +3515,7 @@
 /* Banner */
 
     #banner {
-        background-color: #149FE5;
+        background-color: #16B1FF;
         color: #F9F2FF;
         padding: 8em 0 6em 0;
         text-align: center;
