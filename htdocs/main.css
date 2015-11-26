@@ -1585,7 +1585,7 @@
 
         body {
             background-color: #FFF;
-            color: #444;
+            color: #333;
         }
 
         body, input, select, textarea {
@@ -1896,7 +1896,7 @@
             -ms-pointer-events: none;
             pointer-events: none;
             opacity: 1;
-            background-color: #ACCBE1;
+            background-color: #16B1FF;
             
         }
 
