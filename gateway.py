@@ -167,7 +167,7 @@ def application (environ, start_response):
         #Authentication in progress
         text = login()
         if 'pswd' in req.POST and req.POST['pswd'] == 'beta uprising':
-            text = authenticated
+            text = 'authenticated'
 
     resp = Response(body=text)
     resp.content_type = 'text/html'
