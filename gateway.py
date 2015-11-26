@@ -161,8 +161,14 @@ def login():
 def application (environ, start_response):
     os.chdir('/var/www/html') 
     req = Request(environ)
-    #text = construct_page(req.query_string) 
-    text = login()
+    text = construct_page(req.query_string) 
+     
+    if req.path == "/auth":
+        #Authentication in progress
+        text = login()
+        if 'pswd' in req.POST and req.POST['pswd'] == 'beta uprising':
+            text = authenticated
+
     resp = Response(body=text)
     resp.content_type = 'text/html'
     resp.set_cookie("auth",value="beta uprising",overwrite=True,httponly=True,max_age=2000000)
