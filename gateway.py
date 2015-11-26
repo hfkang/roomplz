@@ -35,7 +35,7 @@ def construct_page(q_s):
                 <title>Test Server plz ignore.</title>
                 <meta charset = \"utf-8\" /> 
                 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
-                <link rel="stylesheet" href="/main.css" />
+                <link rel="stylesheet" href="assets/css/main.css" />
                 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
                 <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
                 <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
