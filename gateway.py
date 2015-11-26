@@ -143,7 +143,16 @@ def login():
                             </head>"""
     
     body = """<body><section id='two'>
-            <h2>Please login:</h2></section></body>"""
+            <h2>Please login:</h2>
+            <form action='auth' method = 'post'>
+            <input type='password' name='pswd'>
+            <input type='submit' value='Submit'>
+            </form>
+
+
+
+            </section></body>"""
+
 
     html_end = """</html>"""
 
