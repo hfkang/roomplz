@@ -162,7 +162,8 @@ def application (environ, start_response):
     os.chdir('/var/www/html') 
     req = Request(environ)
     resp = Response()
-    if req.headers['Cookies'] == 'auth=beta uprising':
+    cookies = req.cookies
+    if 'auth' in cookies and cookies['auth'] == 'beta uprising':
         text = construct_page(req.query_string) 
 
     else: 
