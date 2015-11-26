@@ -1976,7 +1976,7 @@
         input[type="button"].special,
         button.special,
         .button.special {
-            background-color: #16B1FF;
+            background-color: #149FEf;
             color: #f9f2ff !important;
             border-radius: 0.5em;
             
@@ -1987,7 +1987,7 @@
             input[type="button"].special:hover,
             button.special:hover,
             .button.special:hover {
-                background-color: #59a6ff;
+                background-color: #00B6FF;
             }
 
             input[type="submit"].special:active,
@@ -1995,7 +1995,7 @@
             input[type="button"].special:active,
             button.special:active,
             .button.special:active {
-                background-color: #0a90d8;
+                background-color: #107CB2;
             }
 
 /* Form */
@@ -3515,7 +3515,7 @@
 /* Banner */
 
     #banner {
-        background-color: #16B1FF;
+        background-color: #149FE5;
         color: #F9F2FF;
         padding: 8em 0 6em 0;
         text-align: center;
