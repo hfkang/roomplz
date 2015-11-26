@@ -161,17 +161,20 @@ def login():
 def application (environ, start_response):
     os.chdir('/var/www/html') 
     req = Request(environ)
-    text = construct_page(req.query_string) 
-     
-    if req.path == "/auth":
-        #Authentication in progress
-        text = login()
-        if 'pswd' in req.POST and req.POST['pswd'] == 'beta uprising':
-            text = 'authenticated'
+    resp = Response()
+    if req.headers['Cookies'] == 'auth=beta uprising':
+        text = construct_page(req.query_string) 
 
-    resp = Response(body=text)
+    else: 
+        #Authentication in progress
+
+        if 'pswd' in req.POST and req.POST['pswd'] == 'beta uprising':
+            text = 'authenticated. return to main page'
+            resp.set_cookie("auth",value="beta uprising",overwrite=True,httponly=True,max_age=2000000)
+        else:
+            text = login()
+    resp.body = text
     resp.content_type = 'text/html'
-    resp.set_cookie("auth",value="beta uprising",overwrite=True,httponly=True,max_age=2000000)
     return resp(environ,start_response) 
 
 
