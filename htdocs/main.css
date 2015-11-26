@@ -1978,7 +1978,7 @@
         .button.special {
             background-color: #00cdcf;
             color: #ffffff !important;
-            border-radius: 0.1em 0.1em 0.1em 0.1em;
+            border-radius: 0.5em;
         }
 
             input[type="submit"].special:hover,
