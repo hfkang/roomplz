@@ -142,12 +142,12 @@ def login():
                 </script>
                             </head>"""
     
-body = """<body><section id='two'>
+    body = """<body><section id='two'>
             <h2>Please login:</h2></section></body>"""
 
-html_end = """</html>"""
+    html_end = """</html>"""
 
-return html_start + head + body + html_end   
+    return html_start + head + body + html_end   
 
 def application (environ, start_response):
     os.chdir('/var/www/html') 
