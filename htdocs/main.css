@@ -3516,10 +3516,17 @@
 /* Banner */
 
     #banner {
-        background-color: #1185BF;
         color: #F9F2FF;
         padding: 8em 0 6em 0;
         text-align: center;
+background: #87e0fd; /* Old browsers */
+background: -moz-linear-gradient(top,  #87e0fd 0%, #05abe0 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#87e0fd), color-stop(100%,#05abe0)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #87e0fd 0%,#05abe0 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #87e0fd 0%,#05abe0 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #87e0fd 0%,#05abe0 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #87e0fd 0%,#05abe0 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=0 ); /* IE6-9 */
     }
 
         #banner input, #banner select, #banner textarea {
