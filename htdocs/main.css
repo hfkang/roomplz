@@ -1899,6 +1899,7 @@
             opacity: 1;
             background-color: #05abe0;
             color: #FFFFFF 
+            float: left; 
         }
 
         @media screen and (max-width: 480px) {
