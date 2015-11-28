@@ -137,11 +137,15 @@ def login():
                 </script>
                             </head>"""
     
-    body = """<body><section id='two'>
+    body = """<body><section id='three'>
             <h2>Please login:</h2>
-            <form action='auth' method = 'post'>
+            <form action='/auth' method = 'post'>
+            <div class = '9u 12u$(small)'>
             <input type='password' name='pswd'>
+            </div>
+            <div class = '3u$ 12u$(small)'>
             <input type='submit' value='Submit'>
+            </div> 
             </form>
 
 
@@ -159,7 +163,8 @@ def application (environ, start_response):
     resp = Response()
     cookies = req.cookies
     if 'auth' in cookies and cookies['auth'] == 'potato':
-        text = construct_page(req.query_string) 
+        text = construct_page(req.query_string)
+         
 
     else: 
         #Authentication in progress
@@ -167,6 +172,7 @@ def application (environ, start_response):
         if 'pswd' in req.POST and req.POST['pswd'] == 'potato salad':
             text = 'authenticated. return to main page'
             resp.set_cookie("auth",value="potato",domain='toastedsesa.me',overwrite=True,httponly=True,max_age=2000000)
+            
         else:
             text = login()
     resp.text = text
