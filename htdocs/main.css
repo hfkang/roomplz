@@ -2371,6 +2371,7 @@
         ul li {
             padding-left: 0.5em;
             color: #F9F2FF;
+            margin: 0 auto;            
         }
 
         ul.alt {
