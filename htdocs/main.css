@@ -1,4 +1,4 @@
-    @import url(font-awesome.min.css);
+    mimport url(font-awesome.min.css);
     @import url("http://fonts.googleapis.com/css?family=Raleway:300,700");
 
     /*
@@ -2373,6 +2373,7 @@
             padding-left: 0.5em;
             color: #F9F2FF;
             margin: 0 auto;            
+            float: left;
         }
 
         ul.alt {
