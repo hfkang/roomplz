@@ -1897,8 +1897,8 @@
             -ms-pointer-events: none;
             pointer-events: none;
             opacity: 1;
-            background-color: #1185Bf;
-            color: #F9F2FF 
+            background-color: #05abe0;
+            color: #FFFFFF 
         }
 
         @media screen and (max-width: 480px) {
@@ -1977,9 +1977,9 @@
         input[type="button"].special,
         button.special,
         .button.special {
-            background-color: #87e0fd;
+            background-color: #05abe0;
             color: #f9f2ff !important;
-            border-radius: 0.5em;
+            border-radius: 0.25em;
             
         }
 
