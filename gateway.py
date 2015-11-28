@@ -75,7 +75,10 @@ def construct_page(q_s):
                     <a href="?GB" class="button alt big">GB</a>
                     <a href="?SF" class="button alt big">SF</a>"""
     body +="""<p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
-    body +="""<ul class="actions"> """
+    
+
+
+    body +="""<div class = "inner narrow"><ul class="actions"> """
                 
     rooms = room_plz(building,day,time)
     for key in sorted(rooms):
@@ -90,7 +93,7 @@ def construct_page(q_s):
     rooms = room_plz(building,day,time+1)
     for key in sorted(rooms):
         body += """<li><a href="#" class="button disabled fit">"""+key+""" : """+str(rooms[key])+""" hr</a></li>\n"""                
-    body += """</ul></section></body>"""
+    body += """</ul></div></section></body>"""
     
 
     html_end = """</html>"""
@@ -138,21 +141,19 @@ def login():
                             </head>"""
     
     body = """<body><section id='three'>
-
-            <header>
+        <div class ='inner narrow'>
             <h2>Please login:</h2>
-            </header>
 
             <form class = 'grid-form' action='/' method = 'post'>
             <div class = 'form-control narrow'>
             <input type='password' name='pswd'>
             </div>
-            <div class = 'form-control narrow'>
+            <div class = 'form-control'>
             <input type='submit' value='Submit'>
             </div> 
             </form>
 
-
+        </div> 
 
             </section></body>"""
 
