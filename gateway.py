@@ -98,16 +98,11 @@ def construct_page(q_s):
     return html_start + head + body + html_end 
 
 def login():
-    ct = datetime.datetime.now() 
-    time = ct.hour  
-    day = ct.weekday() 
-
- 
     html_start = """<!DOCTYPE HTML> \n
     <html>"""
     
     head = """<head> 
-                <title>Test Server plz ignore.</title>
+                <title>Login</title>
                 <meta charset = \"utf-8\" /> 
                 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
                 <link rel="stylesheet" href="main.css" />

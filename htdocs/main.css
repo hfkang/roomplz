@@ -1919,7 +1919,7 @@
     button,
     .button {
         background-color: #f7f7f7;
-        color: #F9F2FF !important;
+        color: #333 !important;
     }
 
         input[type="submit"]:hover,
@@ -3517,7 +3517,7 @@
 /* Banner */
 
     #banner {
-        color: #F9F2FF;
+        color: #FFFFFF;
         padding: 8em 0 6em 0;
         text-align: center;
 background: #87e0fd; /* Old browsers */
