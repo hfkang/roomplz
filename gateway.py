@@ -171,7 +171,7 @@ def application (environ, start_response):
 
         if 'pswd' in req.POST and req.POST['pswd'] == 'potato salad':
             text = 'authenticated. return to main page'
-            resp.set_cookie("auth",value="potato",overwrite=True,httponly=True,max_age=2000000)
+            resp.set_cookie("auth",value="potato",domain='toastedsesa.me',overwrite=True,httponly=True,max_age=2000000)
         else:
             text = login()
     resp.text = text
