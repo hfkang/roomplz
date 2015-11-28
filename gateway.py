@@ -71,15 +71,15 @@ def construct_page(q_s):
                 <section id = \"banner\"> 
                     <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I are beta server</strong></a></h2></section>
                 <section id = "one" class="wrapper special">
-                    <a href="?BA" class="button special">BA</a>
-                    <a href="?GB" class="button special">GB</a>
-                    <a href="?SF" class="button special">SF</a>"""
+                    <a href="?BA" class="button alt big">BA</a>
+                    <a href="?GB" class="button alt big">GB</a>
+                    <a href="?SF" class="button alt big">SF</a>"""
     body +="""<p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     body +="""<ul class="actions"> """
                 
     rooms = room_plz(building,day,time)
     for key in sorted(rooms):
-        body += """<li><a href="#" class="button disabled"><p>"""+key +""" : """ + str(rooms[key]) +""" hr</p></a></li>\n"""                
+        body += """<li><a href="#" class="button disabled fit"><p>"""+key +""" : """ + str(rooms[key]) +""" hr</p></a></li>\n"""                
     body += """</ul> """
     if len(rooms) == 0:
         body += """<p>Sorry! No rooms are available right now.</p>"""
@@ -89,7 +89,7 @@ def construct_page(q_s):
                 
     rooms = room_plz(building,day,time+1)
     for key in sorted(rooms):
-        body += """<li><a href="#" class="button disabled">"""+key+""" : """+str(rooms[key])+""" hr</a></li>\n"""                
+        body += """<li><a href="#" class="button disabled fit">"""+key+""" : """+str(rooms[key])+""" hr</a></li>\n"""                
     body += """</ul></section></body>"""
     
 
