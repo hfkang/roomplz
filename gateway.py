@@ -138,12 +138,16 @@ def login():
                             </head>"""
     
     body = """<body><section id='three'>
+
+            <header>
             <h2>Please login:</h2>
-            <form action='/' method = 'post'>
-            <div class = '9u 12u$(small)'>
+            </header>
+
+            <form class = 'grid-form' action='/' method = 'post'>
+            <div class = 'form-control narrow'>
             <input type='password' name='pswd'>
             </div>
-            <div class = '3u$ 12u$(small)'>
+            <div class = 'form-control narrow'>
             <input type='submit' value='Submit'>
             </div> 
             </form>
