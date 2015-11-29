@@ -26,7 +26,10 @@ def construct_page(q_s):
         building = "GB"
     if q_s == "SF":
         building = "SF" 
-
+    if q_s == "TEST":
+        building = "BA"
+        day = 1
+        time = 12
  
     html_start = """<!DOCTYPE HTML> \n
     <html>"""
