@@ -196,9 +196,16 @@ def francis():
                             </head>"""
     
     body = """<body style='background-color:#f7f7f7'><section id='three' class='wrapper style2 special'>
-            <h1>Hi there, I'm Francis Kang.</h2>
-            <h2>Education:</h2>
+            <h2>Hi there, I'm Francis Kang.</h2>
+            <h3>Education:</h3>
             <p>Engineering Science, University of Toronto</p>
+            <p>Mechanical Techniques, George Brown College</p>
+            <h3>Skills:</h3>
+            <p>Python, Java, C , MATLAB<br>
+            Solidworks, MasterCAM, Machining <br></p>
+            <h3>Stuff I've done:</h3>
+            <p>This website(setting up mod_wsgi was way more confusing that it could have been) <br></p>
+            <a href='www.github.com/hfkang'>My Github</a>
             
 
             </section></body>"""
