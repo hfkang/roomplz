@@ -2368,7 +2368,19 @@
         margin: 0 auto;
         text-align: center;
         padding-left: 1em;
-        }
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -moz-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -moz-justify-content: center;
+        -webkit-justify-content: center;
+        -ms-justify-content: center;
+        justify-content: center;
+    }
 
         ul li {
             padding-left: 0.5em;
