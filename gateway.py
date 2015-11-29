@@ -158,7 +158,7 @@ def login():
 
         </div> 
 
-            </section></body>"""
+            </section><style>background-color:#f7f7f7;</style></body>"""
 
 
     html_end = """</html>"""
