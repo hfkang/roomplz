@@ -195,7 +195,7 @@ def francis():
                 <meta name="theme-color" content="#ffffff"> 
                             </head>"""
     
-    body = """<body style='background-color:#f7f7f7'><section id='three' class='wrapper style2 special'>
+    body = """<body><section id='two' class='wrapper style2 special'>
             <h2>Hi there, I'm Francis Kang.</h2>
             <h3>Education:</h3>
             <p>Engineering Science, University of Toronto</p>
@@ -205,7 +205,7 @@ def francis():
             Solidworks, MasterCAM, Machining <br></p>
             <h3>Stuff I've done:</h3>
             <p>This website(setting up mod_wsgi was way more confusing that it could have been) <br></p>
-            <a href='www.github.com/hfkang'>My Github</a>
+            <a ref='www.github.com/hfkang'>My Github</a>
             
 
             </section></body>"""
