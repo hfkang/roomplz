@@ -165,23 +165,68 @@ def login():
 
     return html_start + head + body + html_end   
 
+def francis():
+     html_start = """<!DOCTYPE HTML> \n
+    <html>"""
+    
+    head = """<head> 
+                <title>Francis Kang</title>
+                <meta charset = \"utf-8\" /> 
+                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+                <link rel="stylesheet" href="main.css" />
+                <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+                <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+                <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+                <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+                <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+                <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+                <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+                <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+                <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+                <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+                <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+                <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+                <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+                <link rel="manifest" href="/manifest.json">
+                <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+                <meta name="msapplication-TileColor" content="#da532c">
+                <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+                <meta name="theme-color" content="#ffffff"> 
+                            </head>"""
+    
+    body = """<body style='background-color:#f7f7f7'><section id='three' class='wrapper style2 special'>
+            <h1>Hi there, I'm Francis Kang.</h2>
+            <h2>Education:</h2>
+            <p>Engineering Science, University of Toronto</p>
+            
+
+            </section></body>"""
+
+
+    html_end = """</html>"""
+
+    return html_start + head + body + html_end   
+
+   
+
 def application (environ, start_response):
     os.chdir('/var/www/html') 
     req = Request(environ)
     resp = Response()
     cookies = req.cookies
-    if 'auth' in cookies and cookies['auth'] == 'potato horse banana orange sloth':
-        text = construct_page(req.query_string)
-         
-
-    else: 
-        #Authentication in progress
-
-        if 'pswd' in req.POST and req.POST['pswd'] == 'potato salad':
-            resp.set_cookie("auth",value="potato horse banana orange sloth",domain='toastedsesa.me',overwrite=True,httponly=True,max_age=20000000)
-            text = construct_page(req.query_string) 
-        else:
-            text = login()
+    if req.path == 'francis':
+        text = francis()
+    else:
+        if 'auth' in cookies and cookies['auth'] == 'potato horse banana orange sloth':
+            text = construct_page(req.query_string)
+        else: 
+            #Authentication in progress
+            if 'pswd' in req.POST and req.POST['pswd'] == 'potato salad':
+                resp.set_cookie("auth",value="potato horse banana orange sloth",domain='toastedsesa.me',overwrite=True,httponly=True,max_age=20000000)
+                text = construct_page(req.query_string) 
+            else:
+                text = login()
     resp.text = text
     resp.content_type = 'text/html'
     return resp(environ,start_response) 
