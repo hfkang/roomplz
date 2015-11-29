@@ -87,7 +87,7 @@ def construct_page(q_s):
     if len(rooms) == 0:
         body += """<p>Sorry! No rooms are available right now.</p>"""
     
-    body += """<p>These rooms are available in the next hour:</p>"""
+    body += """<br><p>These rooms are available in the next hour:</p>"""
     body +="""<ul class="actions"> """
                 
     rooms = room_plz(building,day,time+1)
