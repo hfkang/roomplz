@@ -143,7 +143,7 @@ def login():
                 </script>
                             </head>"""
     
-    body = """<body><section id='three'>
+    body = """<body><section id='three' class='wrapper style2 special'>
         <div class ='inner narrow' allign='center'>
             <h2>Please login:</h2>
 
