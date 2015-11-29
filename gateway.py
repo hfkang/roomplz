@@ -74,11 +74,11 @@ def construct_page(q_s):
                     <a href="?BA" class="button alt big">BA</a>
                     <a href="?GB" class="button alt big">GB</a>
                     <a href="?SF" class="button alt big">SF</a>"""
-    body +="""<p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
+    body +="""<div class = "inner narrow"><p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     
 
 
-    body +="""<div class = "inner narrow"><ul class="actions"> """
+    body +="""<ul class="actions"> """
                 
     rooms = room_plz(building,day,time)
     for key in sorted(rooms):
@@ -87,7 +87,7 @@ def construct_page(q_s):
     if len(rooms) == 0:
         body += """<p>Sorry! No rooms are available right now.</p>"""
     
-    body += """<br><br><p>These rooms are available in the next hour:</p>"""
+    body += """&nbsp<p>These rooms are available in the next hour:</p>"""
     body +="""<ul class="actions"> """
                 
     rooms = room_plz(building,day,time+1)
