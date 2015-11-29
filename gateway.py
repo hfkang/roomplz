@@ -35,7 +35,7 @@ def construct_page(q_s):
     <html>"""
     
     head = """<head> 
-                <title>Test Server plz ignore.</title>
+                <title>EngSci dkm pls</title>
                 <meta charset = \"utf-8\" /> 
                 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
                 <link rel="stylesheet" href="main.css" />
