@@ -74,7 +74,7 @@ def construct_page(q_s):
                     <a href="?BA" class="button alt big">BA</a>
                     <a href="?GB" class="button alt big">GB</a>
                     <a href="?SF" class="button alt big">SF</a>"""
-    body +="""<div class = "inner narrow"><p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
+    body +="""<div class = "inner"><p>You requested a room in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     
 
 
