@@ -144,7 +144,7 @@ def login():
                             </head>"""
     
     body = """<body><section id='three'>
-        <div class ='inner narrow'>
+        <div class ='inner narrow' allign='center'>
             <h2>Please login:</h2>
 
             <form class = 'grid-form' action='/' method = 'post'>
