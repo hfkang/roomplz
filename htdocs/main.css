@@ -2365,7 +2365,8 @@
 
     ul {
         list-style: disc;
-        margin: 0 0 2em 0;
+        margin: 0 auto;
+        text-align: center;
         padding-left: 1em;
         display: -moz-flex;
         display: -webkit-flex;
@@ -2384,7 +2385,8 @@
         ul li {
             padding-left: 0.5em;
             color: #F9F2FF;
-            margin: 0 auto;            
+            display: inline-block;
+            vertical-align: top;       
             
         }
 
