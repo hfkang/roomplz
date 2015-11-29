@@ -215,7 +215,7 @@ def application (environ, start_response):
     req = Request(environ)
     resp = Response()
     cookies = req.cookies
-    if req.path == 'francis':
+    if req.path == '/francis':
         text = francis()
     else:
         if 'auth' in cookies and cookies['auth'] == 'potato horse banana orange sloth':
