@@ -166,8 +166,8 @@ def login():
     return html_start + head + body + html_end   
 
 def francis():
-     html_start = """<!DOCTYPE HTML> \n
-    <html>"""
+    html_start = """<!DOCTYPE HTML> \n
+                    <html>"""
     
     head = """<head> 
                 <title>Francis Kang</title>
