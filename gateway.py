@@ -144,11 +144,11 @@ def login():
                             </head>"""
     
     body = """<body style='background-color:#f7f7f7'><section id='three' class='wrapper style2 special'>
-        <div class ='inner narrow' allign='center'>
+        <div class ='inner narrow'>
             <h2>Please login:</h2>
 
             <form class = 'grid-form' action='/' method = 'post'>
-            <div class = 'form-control narrow'>
+            <div class = 'form-control'>
             <input type='password' name='pswd'>
             </div>
             <div class = 'form-control'>
