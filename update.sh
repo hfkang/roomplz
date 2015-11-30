@@ -1,6 +1,11 @@
 #!/bin/bash
-
+LOG=~/roomplz/update.log
 #This executes the osm download script for BA only sofar
 cd ~/roomplz
-python3 osm.py -engineering
+python3 osm.py -engineering 
 cp -f {BA_organized,GB_organized,SF_organized} /var/www/html
+git commit *_organized 
+git push deploy
+
+
+
