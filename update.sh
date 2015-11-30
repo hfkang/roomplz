@@ -4,8 +4,8 @@ LOG=~/roomplz/update.log
 cd ~/roomplz
 python3 osm.py -engineering 
 cp -f {BA_organized,GB_organized,SF_organized} /var/www/html
-git commit *_organized 
-git push deploy
+git commit {BA_organized,GB_organized,SF_organized} -m Autoupdate 
+git push master deploy
 
 
 
