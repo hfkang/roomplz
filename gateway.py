@@ -211,8 +211,9 @@ def francis():
             <p>Engineering Science, University of Toronto</p>
             <p>Mechanical Techniques, George Brown College</p>
             <h3>Skills:</h3>
-            <p>Python, Java, C , MATLAB<br>
-            Solidworks, MasterCAM, Machining <br></p>
+            <p>Python, Java, C , Verilog<br>
+            MATLAB, Solidworks, MasterCAM<br>
+            Machining, Welding </p>
             <h3>Stuff I've done:</h3>
             <p>This website</p>
             <a href='https://www.github.com/hfkang'>My Github</a>
