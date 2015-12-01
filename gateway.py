@@ -74,9 +74,9 @@ def construct_page(q_s):
                 <section id = \"banner\"> 
                     <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I can haz room?</strong></a></h2></section>
                 <section id = "one" class="wrapper special">
-                    <a href="?BA" class="button alt big">BA</a>
-                    <a href="?GB" class="button alt big">GB</a>
-                    <a href="?SF" class="button alt big">SF</a>"""
+                    <a href="/?BA" class="button alt big">BA</a>
+                    <a href="/?GB" class="button alt big">GB</a>
+                    <a href="/?SF" class="button alt big">SF</a>"""
     body +="""<div class = "inner"><p>These rooms are free in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     
 
