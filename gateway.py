@@ -204,7 +204,7 @@ def francis():
             <p>Python, Java, C , MATLAB<br>
             Solidworks, MasterCAM, Machining <br></p>
             <h3>Stuff I've done:</h3>
-            <p>This website(setting up mod_wsgi was way more confusing that it could have been) <br></p>
+            <p>This website</p>
             <a href='https://www.github.com/hfkang'>My Github</a>
             
 
