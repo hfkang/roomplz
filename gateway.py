@@ -217,7 +217,7 @@ def francis():
             <h3>Stuff I've done:</h3>
             <p>This website</p>
             <a href='https://www.github.com/hfkang'>My Github</a>
-            
+            <a href="mailto:h.franciskang@gmail.com?Subject=Hello" target="_top">Contact Me</a> 
 
             </section></body>"""
 
