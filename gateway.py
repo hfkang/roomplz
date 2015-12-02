@@ -215,7 +215,7 @@ def francis():
             MATLAB, Solidworks, MasterCAM<br>
             Machining, Welding </p>
             <h3>Stuff I've done:</h3>
-            <p><a href='/'>www.toastedsesa.me</a>(Access code is 'potato salad'</p>
+            <p><a href='/'>www.toastedsesa.me</a>(Access code is 'potato salad')</p>
             <a href='https://www.github.com/hfkang'>My Github</a>
             <a href="mailto:h.franciskang@gmail.com?Subject=Hello" target="_top">Contact Me</a> 
 
