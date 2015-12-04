@@ -50,8 +50,8 @@ def search(query):
                 <meta name="theme-color" content="#ffffff"> 
                 <script type="text/javascript" src="/mainanalytics.js" ></script> 
                 </head>"""
-    body = """<body>"""+response+</body>
-    end_html = """</html>"""
+    body = "<body>"+response+"</body>"
+    end_html = "</html>"
 
 
     return start_html+head+body+end_html
