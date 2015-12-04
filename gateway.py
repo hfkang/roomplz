@@ -19,7 +19,7 @@ def search(query):
                     if query in campus[building][room][hour][day]:
                         response_text += (building+"in "+room+" at " + str(hour+7) + " on " +str(day) + "\n")
 
- 
+    return response_text 
 
 #Pulls the room data from the archived dictionary
 
