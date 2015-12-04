@@ -122,7 +122,7 @@ def login():
                 <meta name="msapplication-TileColor" content="#da532c">
                 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
                 <meta name="theme-color" content="#ffffff"> 
-                <script src="mainanalytics.js"></script>
+                <script type="text/javascript" src="mainanalytics.js"></script>
    
                                            </head>"""
     
@@ -176,7 +176,7 @@ def francis():
                 <meta name="msapplication-TileColor" content="#da532c">
                 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
                 <meta name="theme-color" content="#ffffff">
-                <script src="/personalanalytics.js"></script>
+                <script type="text/javascript" src="/personalanalytics.js"></script>
 
                                </head>"""
     
