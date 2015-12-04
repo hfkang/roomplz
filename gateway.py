@@ -18,8 +18,9 @@ def search(query):
         for hour in range(16):
             for building in campus:
                 for room in campus[building]:
-                    if query in campus[building][room][hour][day]:
-                        response += ("<p>" + building+" in "+room+" at " + str(hour+7) + " on " + week[day] + "</p>\n")
+                    booking = campus[building][room][hour][day]
+                    if query in booking 
+                        response += ("<p>" +booking+" will be in "+building+room+" at " + str(hour+7) + " on " + week[day] + "</p>\n")
 
 
     html_start = """<!DOCTYPE HTML> \n
