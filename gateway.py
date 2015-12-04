@@ -1,7 +1,28 @@
 import platform, sys, os, datetime,pickle 
 from webob import Response,Request, exc
 
+def search(query):
+    campus = {} #this is beyond inefficient 
+    with open("SF_fulldata","rb") as f:
+        campus['SF'] = pickle.load(f)
+    with open("GB_fulldata","rb") as f:
+        campus['GB'] = pickle.load(f)
+    with open("BA_fulldata","rb") as f:
+        campus['BA'] = pickle.load(f)
+
+    #the dictionaries are not indexed in [day][hour]
+    for day in range(7):
+        for hour in range(16):
+            for building in campus:
+                for room in campus[building]:
+                    if query in campus[building][room][hour][day]:
+                        print(building+"in "+room+" at " + str(hour+7) + " on " +str(day))
+
+ 
+
 #Pulls the room data from the archived dictionary
+
+
 def room_plz(b,d,t):
     building = b
     time = t  
@@ -214,7 +235,10 @@ def application (environ, start_response):
            
     else:
         if 'auth' in cookies and cookies['auth'] == 'potato horse banana orange sloth':
-            text = construct_page(req.query_string)
+            if req.path == "/search":
+                text = search(req.query_string)
+            else:
+                text = construct_page(req.query_string)
         else: 
             #Authentication in progress
             if 'pswd' in req.POST and req.POST['pswd'] == 'potato salad':
