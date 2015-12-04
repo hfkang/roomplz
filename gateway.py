@@ -211,9 +211,7 @@ def application (environ, start_response):
 
     if req.path == '/francis':
         text = francis()
-    elif req.path == "/request":
-        text = "plz redirect"
-        
+           
     else:
         if 'auth' in cookies and cookies['auth'] == 'potato horse banana orange sloth':
             text = construct_page(req.query_string)
@@ -224,11 +222,12 @@ def application (environ, start_response):
                 text = construct_page(req.query_string) 
             else:
                 text = login()
+
     resp.text = text
     resp.content_type = 'text/html'
 
-    if req.path == "/redirect":
-        resp = exc.HTTPSeeOther(detail="One moment please",headers=None,comment=None,body_template=None,location="/",add_slash=False) 
+
+    #resp = exc.HTTPSeeOther(detail="One moment please",headers=None,comment=None,body_template=None,location="/",add_slash=False) 
     
     return resp(environ,start_response) 
 
