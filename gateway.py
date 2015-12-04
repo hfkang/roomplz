@@ -1,5 +1,6 @@
 import platform, sys, os, datetime,pickle 
 from webob import Response,Request
+from webob.exc import *
 
 #Pulls the room data from the archived dictionary
 def room_plz(b,d,t):
@@ -211,6 +212,9 @@ def application (environ, start_response):
 
     if req.path == '/francis':
         text = francis()
+    elif req.path == "/request":
+        text = "plz redirect"
+        
     else:
         if 'auth' in cookies and cookies['auth'] == 'potato horse banana orange sloth':
             text = construct_page(req.query_string)
