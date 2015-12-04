@@ -2,6 +2,7 @@ import platform, sys, os, datetime,pickle
 from webob import Response,Request, exc
 
 def search(query):
+    response_text = "You searched for : " + query + "\n"
     campus = {} #this is beyond inefficient 
     with open("SF_fulldata","rb") as f:
         campus['SF'] = pickle.load(f)
@@ -16,7 +17,7 @@ def search(query):
             for building in campus:
                 for room in campus[building]:
                     if query in campus[building][room][hour][day]:
-                        print(building+"in "+room+" at " + str(hour+7) + " on " +str(day))
+                        response_text += (building+"in "+room+" at " + str(hour+7) + " on " +str(day) + "\n")
 
  
 
