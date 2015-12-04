@@ -19,7 +19,7 @@ def search(query):
             for building in campus:
                 for room in campus[building]:
                     booking = campus[building][room][hour][day]
-                    if query in booking 
+                    if query in booking: 
                         response += ("<p>" +booking+" will be in "+building+room+" at " + str(hour+7) + " on " + week[day] + "</p>\n")
 
 
