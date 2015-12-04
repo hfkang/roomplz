@@ -228,7 +228,7 @@ def application (environ, start_response):
     resp.content_type = 'text/html'
 
     if req.path == "/redirect":
-        resp = exc.HTTPSeeOther(detail="One moment please",headers=None,comment=None,body_template=None,location=None,add_slash=False) 
+        resp = exc.HTTPSeeOther(detail="One moment please",headers=None,comment=None,body_template=None,location="/",add_slash=False) 
     
     return resp(environ,start_response) 
 
