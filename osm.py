@@ -11,11 +11,12 @@ def search(query):
         campus['BA'] = pickle.load(f)
 
     #the dictionaries are not indexed in [day][hour]
-    for day in range(7):
-        for hour in range(16):
+    for hour in range(16):
+        for day in range(7):
             for building in campus:
                 for room in campus[building]:
                     if query in campus[building][room][hour][day]:
+                        
                         print(building+"in "+room+" at " + str(hour+7) + " on " +str(day))
 
  

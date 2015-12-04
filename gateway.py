@@ -208,6 +208,7 @@ def application (environ, start_response):
     req = Request(environ)
     resp = Response()
     cookies = req.cookies
+
     if req.path == '/francis':
         text = francis()
     else:
@@ -222,6 +223,11 @@ def application (environ, start_response):
                 text = login()
     resp.text = text
     resp.content_type = 'text/html'
+
+    if req.path == "/redirect":
+        exc = webob.exc.HTTPSeeOther(detail="One moment please",headers=None,comment=None,body_template=None,location=None,add_slash=False)
+        resp = exc
+    
     return resp(environ,start_response) 
 
 
