@@ -51,10 +51,10 @@ def search(query):
                 <script type="text/javascript" src="/mainanalytics.js" ></script> 
                 </head>"""
     body = "<body>"+response+"</body>"
-    end_html = "</html>"
+    html_end = "</html>"
 
 
-    return start_html+head+body+end_html
+    return html_start+head+body+html_end
 
 #Pulls the room data from the archived dictionary
 
