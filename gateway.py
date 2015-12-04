@@ -2,7 +2,7 @@ import platform, sys, os, datetime,pickle
 from webob import Response,Request, exc
 
 def search(query):
-
+    response = "<h2>You wanted :"+query+"</h2>
 
     campus = {} #this is beyond inefficient 
     with open("SF_fulldata","rb") as f:
