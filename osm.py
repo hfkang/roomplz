@@ -1,6 +1,26 @@
 import requests, pickle, datetime,sys,json 
 from bs4 import BeautifulSoup
 
+def search(query):
+    campus = {}
+    with open("SF_fulldata","rb") as f:
+        campus['SF'] = pickle.load(f)
+    with open("GB_fulldata","rb") as f:
+        campus['GB'] = pickle.load(f)
+    with open("BA_fulldata","rb") as f:
+        campus['BA'] = pickle.load(f)
+
+    #the dictionaries are not indexed in [day][hour]
+    for day in range(7):
+        for hour in range(16):
+            for building in campus:
+                for room in campus[building]:
+                    if query in campus[building][room][hour][day]:
+                        print(building+"in "+room+" at " + str(hour+7) + " on " +str(day))
+
+ 
+    
+
 def store_organized(building_name, building_data): 
     
     organized = organize(building_data)
@@ -22,9 +42,12 @@ def main(args):
             print("Will download SF")
             download("SF")   
     if "-engineering" == args[1]:
-            download("BA")
-            download("GB")
-            download("SF")    
+        download("BA")
+        download("GB")
+        download("SF")    
+
+    if "-s" == args[1]:
+        search(args[2])
 
 def nitialize():
     #Pulls original room and building name data from OSM website. No longer needed if using Pickles
@@ -152,4 +175,4 @@ def print_room(room_sched):
 
 
 if __name__=="__main__":
-   main(sys.argv) 
+   main(sys.argv)

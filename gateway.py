@@ -58,17 +58,8 @@ def construct_page(q_s):
                 <meta name="msapplication-TileColor" content="#da532c">
                 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
                 <meta name="theme-color" content="#ffffff"> 
-                <script>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                  ga('create', 'UA-70666671-1', 'auto');
-                  ga('send', 'pageview');
-
-                </script>
-                            </head>"""
+                <script src ="/mainanalytics.js"></script> 
+                </head>"""
     
     body = """<body> 
                 <section id = \"banner\"> 
@@ -131,17 +122,9 @@ def login():
                 <meta name="msapplication-TileColor" content="#da532c">
                 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
                 <meta name="theme-color" content="#ffffff"> 
-                <script>
-                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                  ga('create', 'UA-70666671-1', 'auto');
-                  ga('send', 'pageview');
-
-                </script>
-                            </head>"""
+                <script src="mainanalytics.js"></script>
+   
+                                           </head>"""
     
     body = """<body style='background-color:#f7f7f7'><section id='three' class='wrapper style2 special'>
         <div class ='inner narrow'>
@@ -193,17 +176,9 @@ def francis():
                 <meta name="msapplication-TileColor" content="#da532c">
                 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
                 <meta name="theme-color" content="#ffffff">
-                <script>
-                      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                <script src="/personalanalytics.js"></script>
 
-                      ga('create', 'UA-70666671-2', 'auto');
-                      ga('send', 'pageview');
-
-                </script> 
-                                </head>"""
+                               </head>"""
     
     body = """<body><section id='two' class='wrapper style2 special'>
             <h2>Hi there, I'm Francis Kang.</h2>
