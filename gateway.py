@@ -3,6 +3,7 @@ from webob import Response,Request, exc
 
 def search(query):
     response = "<h2>You wanted :" +query+ "</h2>"
+    week = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 
     campus = {} #this is beyond inefficient 
     with open("SF_fulldata","rb") as f:
@@ -18,7 +19,7 @@ def search(query):
             for building in campus:
                 for room in campus[building]:
                     if query in campus[building][room][hour][day]:
-                        response += ("<p>" + building+"in "+room+" at " + str(hour+7) + " on " +str(day) + "</p>\n")
+                        response += ("<p>" + building+" in "+room+" at " + str(hour+7) + " on " + week[day] + "</p>\n")
 
 
     html_start = """<!DOCTYPE HTML> \n
