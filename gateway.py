@@ -151,7 +151,11 @@ def construct_page(q_s):
 
     html_end = """</html>"""
     
-    return html_start + head + body + html_end 
+    text = html_start + head + body + html_end 
+    resp = Response(body=text)
+    resp.content_type = "text/html" 
+    return resp
+ 
 
 def login():
     html_start = """<!DOCTYPE HTML> \n
@@ -205,7 +209,11 @@ def login():
 
     html_end = """</html>"""
 
-    return html_start + head + body + html_end   
+    text = html_start + head + body + html_end   
+    resp = Response(body=text)
+    resp.content_type = "text/html" 
+    return resp
+ 
 
 def francis():
     html_start = """<!DOCTYPE HTML> \n
@@ -258,8 +266,11 @@ def francis():
 
     html_end = """</html>"""
 
-    return html_start + head + body + html_end   
-
+    text = html_start + head + body + html_end   
+    
+    resp = Response(body=text)
+    resp.content_type = "text/html" 
+    return resp
    
 
 def application (environ, start_response):
@@ -269,28 +280,25 @@ def application (environ, start_response):
     cookies = req.cookies
 
     if req.path == '/francis':
-        text = francis()
+        resp = francis()
            
     else:
         if 'auth' in cookies and cookies['auth'] == 'potato horse banana orange sloth':
             if req.path == "/search":
-                text = search(req.query_string)
+                resp = search(req.query_string)
             else:
-                text = construct_page(req.query_string)
+                resp = construct_page(req.query_string)
         else: 
             #Authentication in progress
             if 'pswd' in req.POST and req.POST['pswd'] == 'potato salad':
+                resp = exc.HTTPSeeOther(detail="One moment please",headers=None,comment=None,body_template=None,location="/",add_slash=False) 
                 resp.set_cookie("auth",value="potato horse banana orange sloth",domain='toastedsesa.me',overwrite=True,httponly=True,max_age=20000000)
-                text = construct_page(req.query_string) 
             else:
-                text = login()
+                resp = login()
 
-    resp.text = text
-    resp.content_type = 'text/html'
+    #resp.content_type = 'text/html'
 
 
-    #resp = exc.HTTPSeeOther(detail="One moment please",headers=None,comment=None,body_template=None,location="/",add_slash=False) 
-    
     return resp(environ,start_response) 
 
 
