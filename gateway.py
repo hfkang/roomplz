@@ -58,7 +58,10 @@ def search(query):
     html_end = "</html>"
 
 
-    return html_start+head+body+html_end
+    text = html_start+head+body+html_end
+    resp = Response(body=text)
+    resp.content_type= "text/html"
+    return resp 
 
 #Pulls the room data from the archived dictionary
 
