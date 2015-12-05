@@ -56,7 +56,7 @@ def search(query):
                 </head>"""
     body = """<body>
                 <form action="/search">
-                    <label>Search for a booking<input name="q"></label>
+                    <label>Search for a booking<input name=""></label>
                     <input type ="submit">
                 </form>"""+response+"</body>"
     html_end = "</html>"
@@ -111,7 +111,7 @@ def construct_page(q_s):
                 <section id = \"banner\"> 
                     <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I can haz room?</strong></a></h2>
                     <form action="/search">
-                        <label>Search for a booking<input name="q"></label>
+                        <label>Search for a booking<input name=""></label>
                         <input type ="submit">
                     </form>
 
