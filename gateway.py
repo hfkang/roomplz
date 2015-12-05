@@ -54,7 +54,11 @@ def search(query):
                 <title>EngSci dkm pls</title>""" + favicons + """
                 <script type="text/javascript" src="/mainanalytics.js" ></script> 
                 </head>"""
-    body = "<body>"+response+"</body>"
+    body = """<body>
+                <form action="/search">
+                    <label>Search for a booking<input name="q"></label>
+                    <input type ="submit">
+                </form>"""+response+"</body>"
     html_end = "</html>"
 
 
@@ -105,7 +109,15 @@ def construct_page(q_s):
     
     body = """<body> 
                 <section id = \"banner\"> 
-                    <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I can haz room?</strong></a></h2></section>
+                    <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I can haz room?</strong></a></h2>
+                    <form action="/search">
+                        <label>Search for a booking<input name="q"></label>
+                        <input type ="submit">
+                    </form>
+
+
+                </section>
+                
                 <section id = "one" class="wrapper special">
                     <a href="/?BA" class="button alt big">BA</a>
                     <a href="/?GB" class="button alt big">GB</a>
