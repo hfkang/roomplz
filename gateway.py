@@ -196,7 +196,7 @@ def francis():
 
     text = html_start + head + body + html_end   
     
-    resp = Response(body=text)
+    resp = Response(body=text,location="/hfkang")
     resp.content_type = "text/html" 
     return resp
    
