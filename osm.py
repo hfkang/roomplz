@@ -16,7 +16,7 @@ def search(query):
             for building in campus:
                 for room in campus[building]:
                     if query in campus[building][room][hour][day]:
-                        
+
                         print(building+"in "+room+" at " + str(hour+7) + " on " +str(day))
 
  
