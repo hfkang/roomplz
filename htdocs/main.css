@@ -3546,7 +3546,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', end
     }
 
         #banner input, #banner select, #banner textarea {
-            color: #ffffff;
+            color: #333;
         }
 
         #banner a {

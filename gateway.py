@@ -1,5 +1,9 @@
 import platform, sys, os, datetime,pickle 
 from webob import Response,Request, exc
+sys.path.append('/home/francis/doberman/')
+
+from hello import app as wsgi_app
+
 
 favicons = """<meta charset = \"utf-8\" /> 
                 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
@@ -25,7 +29,9 @@ favicons = """<meta charset = \"utf-8\" />
                 <meta name="theme-color" content="#ffffff"> 
             """
 
-def search(query):
+def search(qDict):
+    query = qDict['query']
+
     response = "<h2>You wanted :" +query+ "</h2>"
     week = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 
@@ -43,7 +49,7 @@ def search(query):
             for building in campus:
                 for room in campus[building]:
                     booking = campus[building][room][hour][day]
-                    if query in booking: 
+                    if query.upper() in booking: 
                         response += ("<p>" +booking+" will be in "+building+room+" at " + str(hour+7) + " on " + week[day] + "</p>\n")
 
 
@@ -56,7 +62,7 @@ def search(query):
                 </head>"""
     body = """<body>
                 <form action="/search">
-                    <label>Search for a booking<input name=""></label>
+                    <label>Search for a booking<input name="query"></label>
                     <input type ="submit">
                 </form>"""+response+"</body>"
     html_end = "</html>"
@@ -103,7 +109,7 @@ def construct_page(q_s):
     <html>"""
     
     head = """<head> 
-                <title>EngSci dkm pls</title>"""+favicons+ """
+                <title>Beta Server v 0.1.1</title>"""+favicons+ """
                 <script type="text/javascript" src="/mainanalytics.js" ></script> 
                 </head>"""
     
@@ -111,7 +117,7 @@ def construct_page(q_s):
                 <section id = \"banner\"> 
                     <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I can haz room?</strong></a></h2>
                     <form action="/search">
-                        <label>Search for a booking<input name=""></label>
+                        <label>Search for a booking<input name="query"></label>
                         <input type ="submit">
                     </form>
 
@@ -122,9 +128,11 @@ def construct_page(q_s):
                     <a href="/?BA" class="button alt big">BA</a>
                     <a href="/?GB" class="button alt big">GB</a>
                     <a href="/?SF" class="button alt big">SF</a>"""
+
+     
     body +="""<div class = "inner"><p>These rooms are free in """ +building+""" on<br>"""+ct.strftime("%A, %B, %d %I:%M%p") +"""</p>""" 
     
-
+    
 
     body +="""<ul class="actions"> """
                 
@@ -217,18 +225,22 @@ def francis():
    
 
 def application (environ, start_response):
-    os.chdir('/var/www/html') 
+    os.chdir('/home/francis/roomplz') 
     req = Request(environ)
     resp = Response()
     cookies = req.cookies
 
+    return wsgi_app(environ,start_response)
+
     if req.path == '/francis':
         resp = francis()
+    elif req.script_name =='/doberman':
+        return wsgi_app(environ,start_response) 
            
     else:
         if 'auth' in cookies and cookies['auth'] == 'potato horse banana orange sloth':
             if req.path == "/search":
-                resp = search(req.query_string)
+                resp = search(req.GET)
             else:
                 resp = construct_page(req.query_string)
         else: 
