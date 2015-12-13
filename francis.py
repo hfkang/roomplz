@@ -2,9 +2,6 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/francis')
-def francis():
-    return "Hi i'm francis"
 
 
 @app.route('/', defaults={'path': ''})

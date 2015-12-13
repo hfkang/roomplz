@@ -3,6 +3,9 @@ from flask import Flask,render_template,request,redirect,url_for,make_response
 app = Flask(__name__)
 app.debug = True
 
+@app.route('/francis')
+def frank():
+    return str(environ)
 
 def room_plz(b,d,t):
     building = b
