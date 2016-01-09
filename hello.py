@@ -3,9 +3,6 @@ from flask import Flask,render_template,request,redirect,url_for,make_response
 app = Flask(__name__)
 app.debug = True
 
-@app.route('/francis')
-def frank():
-    return str(environ)
 
 def room_plz(b,d,t):
     building = b
@@ -26,7 +23,7 @@ def auth():
         if request.form['pswd'] == 'potato salad':
             #successful authentication 
             resp = app.make_response(redirect('/'))
-            resp.set_cookie('auth',domain='.toastedsesa.me',value='potato horse banana orange sloth')
+            resp.set_cookie('auth',max_age=15000000,domain='.toastedsesa.me',value='potato horse banana orange sloth')
             return resp
         else:
             return render_template('login.html')    
