@@ -35,7 +35,7 @@ def check_auth():
     else:
         return None
 
-@app.route('/search',methods=['POST'])
+@app.route('/search',methods=['POST','GET'])
 def search():
 
     if check_auth():
