@@ -28,6 +28,7 @@
         </head>
     
     <body> 
+    {% block body %}
         <section id = "banner"> 
             <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I can haz room?</strong></a></h2>
         </section>
@@ -63,7 +64,10 @@
                     
                     
         </section>
+
+    {% endblock %}
     </body>
+    
 
 </html>
         

@@ -28,11 +28,46 @@ def auth():
         else:
             return render_template('login.html')    
 
-@app.route('/',methods=['GET'])
 def check_auth():
     
     if not ("auth" in request.cookies and request.cookies['auth'] == 'potato horse banana orange sloth'):
         return redirect(url_for('auth'))
+    else:
+        return None
+
+@app.route('/search',methods=['POST'])
+def search():
+
+    if check_auth():
+        return check_auth()
+
+    campus = {} #this is beyond inefficient 
+    with open("SF_fulldata","rb") as f:
+        campus['SF'] = pickle.load(f)
+    with open("GB_fulldata","rb") as f:
+        campus['GB'] = pickle.load(f)
+    with open("BA_fulldata","rb") as f:
+        campus['BA'] = pickle.load(f)
+
+    listing = []
+
+    #the dictionaries are not indexed in [day][hour]
+    for day in range(7):
+        for hour in range(16):
+            for building in campus:
+                for room in campus[building]:
+                    booking = campus[building][room][hour][day]
+                    if query.upper() in booking: 
+                        listing.append((booking,building,room,hour,day+7))
+
+    return render_template('search.html',results=listing)
+
+
+@app.route('/',methods=['GET'])
+def home_page():
+
+    if check_auth():
+        return check_auth()
     
     q_s = request.query_string.decode('utf-8')
     ct = datetime.datetime.now() 
@@ -51,6 +86,7 @@ def check_auth():
     ts = ct.strftime("%A, %B, %d %I:%M%p")
     rooms1 = room_plz(b,day,time)
     rooms2 = room_plz(b,day,time+1)
+
     return render_template('layout.html',b=b,ts=ts,rooms1=rooms1,rooms2=rooms2)
 
 if __name__ == '__main__':
