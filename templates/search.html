@@ -11,8 +11,10 @@
 	</section>
 
 	<section id="one" class="wrapper-special">
+		<ul>
 		{% for result in results %}
-			<p>{{result[0]}} is in {{result[1]}}{{result[2]}} at {{result[3]}}</p>
+			<li>{{result[0]}} is in {{result[1]}}{{result[2]}} at {{result[3]}}</li>
 		{% endfor %}
+		</ul>
 	</section>
 {% endblock %}

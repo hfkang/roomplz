@@ -40,9 +40,10 @@ def search():
 
     if check_auth():
         return check_auth()
-
-    query = request.args.get('query')
-
+    if 'query' not in request.args.get:
+        query = ""
+    else: 
+        query = request.args.get('query')
 
     campus = {} #this is beyond inefficient 
     with open("SF_fulldata","rb") as f:
