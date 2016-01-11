@@ -2396,6 +2396,7 @@
             ul.alt li {
                 border-top: solid 1px;
                 padding: 0.5em 0;
+                color: #00;
             }
 
                 ul.alt li:first-child {
