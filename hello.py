@@ -35,11 +35,13 @@ def check_auth():
     else:
         return None
 
-@app.route('/search',methods=['POST','GET'])
+@app.route('/search',methods=['GET'])
 def search():
 
     if check_auth():
         return check_auth()
+
+    query = request.query_string.decode('utf-8')
 
     campus = {} #this is beyond inefficient 
     with open("SF_fulldata","rb") as f:
