@@ -40,7 +40,7 @@ def search():
 
     if check_auth():
         return check_auth()
-    if 'query' not in request.args.get:
+    if 'query' not in request.args:
         query = ""
     else: 
         query = request.args.get('query')
