@@ -41,7 +41,8 @@ def search():
     if check_auth():
         return check_auth()
 
-    query = request.query_string.decode('utf-8')
+    query = request.args.get('query')
+
 
     campus = {} #this is beyond inefficient 
     with open("SF_fulldata","rb") as f:
