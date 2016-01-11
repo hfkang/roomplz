@@ -11,10 +11,13 @@
 	</section>
 
 	<section id="one" class="wrapper-special">
-		<ul>
+		<div class="row">
+
+		<ul class = "alt">
 		{% for result in results %}
 			<li>{{result[0]}} is in {{result[1]}}{{result[2]}} at {{result[3]}}</li>
 		{% endfor %}
 		</ul>
+		</div>
 	</section>
 {% endblock %}
