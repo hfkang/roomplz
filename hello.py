@@ -3,6 +3,13 @@ from flask import Flask,render_template,request,redirect,url_for,make_response
 app = Flask(__name__)
 app.debug = True
 
+@app.route("/R")
+@app.route("/r")
+@app.route("/RStudio")
+@app.route("/rstudio")
+@app.route("/stats")
+def arr():
+    return redirect("http://toastedsesa.me:8787")
 
 def room_plz(b,d,t):
     building = b
