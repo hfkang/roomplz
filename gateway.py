@@ -15,7 +15,6 @@ application = DispatcherMiddleware(roomplz, {'/francis': wsgi_francis,'/startup2
 def application(environ,start_response):
     os.chdir('/home/francis/roomplz')
 
-    script = environ['PATH_INFO']  
 
     if script == '/francis':    
         return wsgi_francis(environ,start_response)
