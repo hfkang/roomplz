@@ -4,12 +4,11 @@ from hello import app as roomplz
 from francis import app as wsgi_francis
 sys.path.insert(0, '/home/francis/two')
 from main import app as wsgi_startup2
-from plivo_sms import app as wsgi_plivo
 from werkzeug.wsgi import DispatcherMiddleware
 
 os.chdir('/home/francis/roomplz')
 
-application = DispatcherMiddleware(roomplz, {'/francis': wsgi_francis,'/startup2': wsgi_startup2, '/forward_sms': wsgi_plivo}) 
+application = DispatcherMiddleware(roomplz, {'/francis': wsgi_francis,'/startup2': wsgi_startup2}) 
 
 
 """
