@@ -91,7 +91,7 @@ def home_page():
         b = "SF" 
     if "TEST" in q_s:
         b = request.args.get('building')
-        t = int(request.args.get('time')
+        t = int(request.args.get('time'))
 
      
     ts = ct.strftime("%A, %B, %d %I:%M%p")
