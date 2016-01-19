@@ -94,6 +94,7 @@ def home_page():
         time = int(request.args.get('time'))
         day = int(request.args.get('day'))
         ct = datetime.datetime(ct.year,ct.month,day,hour = time)
+        day = ct.weekday()
      
     ts = ct.strftime("%A, %B, %d %I:%M%p")
     rooms1 = room_plz(b,day,time)
