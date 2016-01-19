@@ -93,7 +93,7 @@ def home_page():
         b = request.args.get('building')
         time = int(request.args.get('time'))
         day = int(request.args.get('day'))
-        ts = datetime.datetime(2016,01,day,hour = time)
+        ct = datetime.datetime(ct.year,ct.month,day,hour = time)
      
     ts = ct.strftime("%A, %B, %d %I:%M%p")
     rooms1 = room_plz(b,day,time)
