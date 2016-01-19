@@ -168,9 +168,14 @@ def parse_room(html):
     return room_sched  
 
 def print_room(room_sched):
+    
     for row in room_sched:
+        print("| ",end="")
         for day in row:
-            print(day,end=' | ')
+            if day == "Empty":
+                print("     ",end = " | ")
+            else:
+                print(day.strip()[:5],end=' | ')
         print()
 
 
