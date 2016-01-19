@@ -91,8 +91,9 @@ def home_page():
         b = "SF" 
     if "TEST" in q_s:
         b = request.args.get('building')
-        t = int(request.args.get('time'))
-
+        time = int(request.args.get('time'))
+        day = int(request.args.get('day'))
+        ts = datetime.datetime(2016,01,day,hour = time)
      
     ts = ct.strftime("%A, %B, %d %I:%M%p")
     rooms1 = room_plz(b,day,time)
