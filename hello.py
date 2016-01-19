@@ -89,10 +89,10 @@ def home_page():
         b = "GB"
     if q_s == "SF":
         b = "SF" 
-    if q_s == "TEST":
-        b = "BA"
-        day = 1
-        time = 12
+    if "TEST" in q_s:
+        b = request.args.get['building']
+        t = int(request.args.get['time'])
+
      
     ts = ct.strftime("%A, %B, %d %I:%M%p")
     rooms1 = room_plz(b,day,time)
