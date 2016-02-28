@@ -6,7 +6,7 @@ sys.path.insert(0, '/home/francis/two')
 from main import app as wsgi_startup2
 from werkzeug.wsgi import DispatcherMiddleware
 sys.path.insert(0, '/home/francis/projincl')
-from api import app as wsgi_incl
+from projincl import app as wsgi_incl
 
 
 
