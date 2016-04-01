@@ -9,6 +9,8 @@ def search(query):
         campus['GB'] = pickle.load(f)
     with open("BA_fulldata","rb") as f:
         campus['BA'] = pickle.load(f)
+    with open("MS_fulldata","rb") as f:
+        campus['MS'] = pickle.load(f)
 
     #the dictionaries are not indexed in [day][hour]
     for hour in range(16):
@@ -46,6 +48,7 @@ def main(args):
         download("BA")
         download("GB")
         download("SF")    
+        download("MS")
 
     if "-s" == args[1]:
         search(args[2])

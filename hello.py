@@ -89,6 +89,8 @@ def home_page():
         b = "GB"
     if q_s == "SF":
         b = "SF" 
+    if q_s == "MS":
+        b = "MS" 
     if "TEST" in q_s:
         b = request.args.get('building')
         time = int(request.args.get('time'))
