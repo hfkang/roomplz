@@ -44,6 +44,9 @@ def main(args):
         if "SF" == args[2]:
             print("Will download SF")
             download("SF")   
+        if "MS" == args[2]:
+            print("Will download MS")
+            download("MS")
     if "-engineering" == args[1]:
         download("BA")
         download("GB")
