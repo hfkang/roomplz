@@ -5,14 +5,12 @@ from francis import app as wsgi_francis
 sys.path.insert(0, '/home/francis/two')
 from main import app as wsgi_startup2
 from werkzeug.wsgi import DispatcherMiddleware
-sys.path.insert(0, '/home/francis/projincl')
-from projincl import app as wsgi_incl
 
 
 
 os.chdir('/home/francis/roomplz')
 
-application = DispatcherMiddleware(roomplz, {'/startup2': wsgi_startup2, '/projincl': wsgi_incl}) 
+application = DispatcherMiddleware(roomplz, {'/startup2': wsgi_startup2}) 
 
 
 """
