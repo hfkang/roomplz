@@ -1,8 +1,7 @@
 #!/bin/bash
-LOG=~/roomplz/update.log
+LOG=/app/roomplz/update.log
 #This executes the osm download script for BA only sofar
-cd ~/roomplz
-python3 osm.py -engineering 
+python3 /app/roomplz/osm.py -engineering
 
 
 

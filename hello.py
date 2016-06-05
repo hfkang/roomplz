@@ -1,4 +1,4 @@
-import pickle,datetime
+import pickle,datetime, os
 from flask import Flask,render_template,request,redirect,url_for,make_response
 app = Flask(__name__)
 app.debug = True
@@ -14,7 +14,8 @@ def arr():
 def room_plz(b,d,t):
     building = b
     time = t  
-    response = [] 
+    response = []
+    os.chdir('/app/roomplz')
     with open(b+"_organized",'rb') as f:
         availability = pickle.load(f)
     if time>=7 and time <= 22:
@@ -52,6 +53,7 @@ def search():
     else: 
         query = request.args.get('query')
 
+    os.chdir('/app/roomplz')
     campus = {} #this is beyond inefficient 
     with open("SF_fulldata","rb") as f:
         campus['SF'] = pickle.load(f)
