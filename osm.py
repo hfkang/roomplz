@@ -1,4 +1,4 @@
-import requests, pickle, datetime,sys,json 
+import requests, pickle, datetime,sys,json, os
 from bs4 import BeautifulSoup
 
 def search(query):
