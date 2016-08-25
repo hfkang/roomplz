@@ -1,5 +1,5 @@
 import pickle,datetime, os
-from flask import Flask,render_template,request,redirect,url_for,make_response
+from flask import Flask,render_template,request,redirect,url_for,abort
 app = Flask(__name__)
 app.debug = True
 
@@ -12,11 +12,10 @@ def arr():
     return redirect("http://toastedsesa.me:8787")
 
 def room_plz(b,d,t):
-    building = b
-    time = t  
+    time = t
     response = []
-    os.chdir('/app/roomplz')
-    with open(b+"_organized",'rb') as f:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    with open(dir_path+"/"+b+"_organized",'rb') as f:
         availability = pickle.load(f)
     if time>=7 and time <= 22:
         response = availability[d][time-7]
@@ -31,17 +30,14 @@ def auth():
         if request.form['pswd'] == 'potato salad':
             #successful authentication 
             resp = app.make_response(redirect('/'))
-            resp.set_cookie('auth',max_age=15000000,domain='.toastedsesa.me',value='potato horse banana orange sloth')
+            resp.set_cookie('auth', max_age=15000000, value='potato horse banana orange sloth')
             return resp
         else:
             return render_template('login.html')    
 
 def check_auth():
-    
     if not ("auth" in request.cookies and request.cookies['auth'] == 'potato horse banana orange sloth'):
         return redirect(url_for('auth'))
-    else:
-        return None
 
 @app.route('/search',methods=['GET'])
 def search():
@@ -53,8 +49,7 @@ def search():
     else: 
         query = request.args.get('query')
 
-    os.chdir('/app/roomplz')
-    campus = {} #this is beyond inefficient 
+    campus = {} #this is beyond inefficient
     with open("SF_fulldata","rb") as f:
         campus['SF'] = pickle.load(f)
     with open("GB_fulldata","rb") as f:
@@ -64,7 +59,7 @@ def search():
 
     listing = []
 
-    #the dictionaries are not indexed in [day][hour]
+    # the dictionaries are not indexed in [day][hour]
     for day in range(7):
         for hour in range(16):
             for building in campus:
@@ -79,9 +74,10 @@ def search():
 @app.route('/',methods=['GET'])
 def home_page():
 
+
     if check_auth():
         return check_auth()
-    
+
     q_s = request.query_string.decode('utf-8')
     ct = datetime.datetime.now() 
     time = ct.hour  

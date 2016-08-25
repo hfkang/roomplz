@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 def search(query):
     campus = {}
-    os.chdir('/app/roomplz')
     with open("SF_fulldata","rb") as f:
         campus['SF'] = pickle.load(f)
     with open("GB_fulldata","rb") as f:
@@ -26,7 +25,6 @@ def search(query):
     
 
 def store_organized(building_name, building_data): 
-    os.chdir('/app/roomplz')
     organized = organize(building_data)
     with open(building_name+"_organized","wb") as f:
         pickle.dump(organized, f)
@@ -48,7 +46,7 @@ def main(args):
         if "MS" == args[2]:
             print("Will download MS")
             download("MS")
-    if "-engineering" == args[1]:
+    if "--all" == args[1]:
         download("BA")
         download("GB")
         download("SF")    
