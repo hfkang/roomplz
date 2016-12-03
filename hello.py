@@ -11,6 +11,10 @@ app.debug = True
 def arr():
     return redirect("http://toastedsesa.me:8787")
 
+@app.route("/exams")
+def examsched():
+    return render_template('examsched.html')
+
 def room_plz(b,d,t):
     time = t
     response = []
