@@ -1,20 +1,11 @@
 import requests, pickle, datetime,sys,json, os
 from bs4 import BeautifulSoup
 
-blist = ['BA','SF','GB','MS','RS']
+blist = ['BA','SF','GB','MS','RS','WB','MP']
 
 def search(query):
     campus = {}
-    """
-    with open("SF_fulldata","rb") as f:
-        campus['SF'] = pickle.load(f)
-    with open("GB_fulldata","rb") as f:
-        campus['GB'] = pickle.load(f)
-    with open("BA_fulldata","rb") as f:
-        campus['BA'] = pickle.load(f)
-    with open("MS_fulldata","rb") as f:
-        campus['MS'] = pickle.load(f)
-    """
+
     for b in blist:
         with open(b + "_fulldata", "rb") as f:
             campus[b] = pickle.load(f)
