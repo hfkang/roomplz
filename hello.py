@@ -1,5 +1,8 @@
 import pickle,datetime, os
 from flask import Flask,render_template,request,redirect,url_for,abort
+from osm import blist
+
+
 app = Flask(__name__)
 app.debug = True
 
@@ -43,36 +46,6 @@ def check_auth():
     if not ("auth" in request.cookies and request.cookies['auth'] == 'potato horse banana orange sloth'):
         return redirect(url_for('auth'))
 
-@app.route('/search',methods=['GET'])
-def search():
-
-    if check_auth():
-        return check_auth()
-    if 'query' not in request.args:
-        query = ""
-    else: 
-        query = request.args.get('query')
-
-    campus = {} #this is beyond inefficient
-    with open("SF_fulldata","rb") as f:
-        campus['SF'] = pickle.load(f)
-    with open("GB_fulldata","rb") as f:
-        campus['GB'] = pickle.load(f)
-    with open("BA_fulldata","rb") as f:
-        campus['BA'] = pickle.load(f)
-
-    listing = []
-
-    # the dictionaries are not indexed in [day][hour]
-    for day in range(7):
-        for hour in range(16):
-            for building in campus:
-                for room in campus[building]:
-                    booking = campus[building][room][hour][day]
-                    if query.upper() in booking: 
-                        listing.append((booking,building,room,hour,day+7))
-
-    return render_template('search.html',results=listing)
 
 
 @app.route('/',methods=['GET'])
@@ -87,12 +60,8 @@ def home_page():
     time = ct.hour  
     day = ct.weekday() 
     b = 'BA'
-    if q_s == "GB":
-        b = "GB"
-    if q_s == "SF":
-        b = "SF" 
-    if q_s == "MS":
-        b = "MS" 
+    if q_s in blist:
+        b = q_s
     if "TEST" in q_s:
         b = request.args.get('building')
         time = int(request.args.get('time'))
@@ -104,7 +73,7 @@ def home_page():
     rooms1 = room_plz(b,day,time)
     rooms2 = room_plz(b,day,time+1)
 
-    return render_template('layout.html',b=b,ts=ts,rooms1=rooms1,rooms2=rooms2)
+    return render_template('layout.html',b=b,ts=ts,rooms1=rooms1,rooms2=rooms2,blist = blist)
 
 if __name__ == '__main__':
     app.config['PROPAGATE_EXCEPTIONS'] = True

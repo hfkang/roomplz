@@ -1,8 +1,11 @@
 import requests, pickle, datetime,sys,json, os
 from bs4 import BeautifulSoup
 
+blist = ['BA','SF','GB','MS','RS']
+
 def search(query):
     campus = {}
+    """
     with open("SF_fulldata","rb") as f:
         campus['SF'] = pickle.load(f)
     with open("GB_fulldata","rb") as f:
@@ -11,6 +14,10 @@ def search(query):
         campus['BA'] = pickle.load(f)
     with open("MS_fulldata","rb") as f:
         campus['MS'] = pickle.load(f)
+    """
+    for b in blist:
+        with open(b + "_fulldata", "rb") as f:
+            campus[b] = pickle.load(f)
 
     #the dictionaries are not indexed in [day][hour]
     for hour in range(16):
@@ -47,13 +54,9 @@ def main(args):
             print("Will download MS")
             download("MS")
     if "--all" == args[1]:
-        download("BA")
-        download("GB")
-        download("SF")    
-        download("MS")
+        for b in blist:
+            download(b)
 
-    if "-s" == args[1]:
-        search(args[2])
 
 def nitialize():
     #Pulls original room and building name data from OSM website. No longer needed if using Pickles
