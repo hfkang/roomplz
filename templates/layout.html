@@ -25,25 +25,41 @@
         <meta name="theme-color" content="#ffffff"> 
 
         <link rel="stylesheet" href={{url_for('static',filename='main.css')}} />
+        <link rel="stylesheet" href={{url_for('static',filename='animation.css')}} />
+
+
         <script type="text/javascript" src={{url_for('static',filename="mainanalytics.js")}} ></script> 
         <script type="text/javascript" src={{url_for('static',filename="addtohomescreen.min.js")}} ></script> 
-        <script>addToHomescreen();s</script>
+        <script>addToHomescreen();</script>
+        <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+        <script>
+            $(function() { $("#aniTrigger").click(function() {
+                $(".tilt").toggleClass("tilt-active");
+                $(".button.disabled").toggleClass("cshift-active");
+                $("#banner").toggleClass("cshift-active");
+            });});
+        </script>
 
         </head>
     {% block body %}
-    <body> 
-
-        <section id = "banner"> 
-            <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I can haz room pls?</strong></a></h2>
+    <body>
+        <div class="tilt">
+        <section id = "banner" class="cshift">
+            <h2><a href =# id="aniTrigger"><strong>I can haz room pls?</strong></a></h2>
         </section>
-
+        </div>
         <section id = "one" class="wrapper special">
+        <div class="tilt">
             {% for b in blist %}
             <a href="/?{{ b }}" class="button alt big">{{ b }}</a>
             {% endfor %}
+        </div>
 
             
-            <div class = "inner">
+            <div class = "inner tilt">
             {% if rooms1 %}     
                 <p>These rooms are free in {{b}} on {{ts}}</p>
             
@@ -58,9 +74,9 @@
                 
             {% if rooms2 %}
                 <p>These rooms will be free in the next hour</p>
-                <ul class="actions">
+                <ul class="actions ">
                     {% for item in rooms2|dictsort %}
-                        <li><a href="#" class="button disabled fit">{{item[0]}} : {{item[1]}} hr</a></li> 
+                        <li><a href="#" class="button disabled fit">{{item[0]}} : {{item[1]}} hr</a></li>
                     {% endfor %}
                 </ul> 
             {% else %}
