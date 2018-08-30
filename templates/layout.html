@@ -1,83 +1,112 @@
 <!DOCTYPE HTML>
 <html>
-    <head> 
-        <title>EngSci dkm pls</title>
-        <meta charset = "utf-8" /> 
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
-        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="/manifest.json">
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-        <meta name="theme-color" content="#ffffff"> 
+<head>
+    <title>EngSci dkm pls</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
-        <link rel="stylesheet" href={{url_for('static',filename='main.css')}} />
-        <script type="text/javascript" src={{url_for('static',filename="mainanalytics.js")}} ></script> 
-        <script type="text/javascript" src={{url_for('static',filename="addtohomescreen.min.js")}} ></script> 
-        <script>addToHomescreen();s</script>
+    <link rel="stylesheet" href={{ url_for('static',filename='main.css') }}/>
+    <link rel="stylesheet" href={{ url_for('static',filename='animation.css') }}/>
 
-        </head>
-    {% block body %}
-    <body> 
 
-        <section id = "banner"> 
-            <h2><a href =http://thecatapi.com/api/images/get?format=src><strong>I can haz room plz?</strong></a></h2>
-            <form action="/search">
-                <label>Search for a booking<input name="query"></label>
-                <input type ="submit">
-            </form>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-70666671-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript" src={{ url_for('static',filename="addtohomescreen.min.js") }}></script>
+    <script>addToHomescreen();</script>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#aniTrigger").click(function () {
+                $(".tilt").toggleClass("tilt-active");
+                $(".button.disabled").toggleClass("cshift-active");
+                $("#banner").toggleClass("cshift-active");
+            });
+        });
+    </script>
+
+</head>
+{% block body %}
+    <body>
+    <div class="tilt">
+        <section id="banner" class="cshift">
+            <h2><a href=# id="aniTrigger"><strong>I can haz room pls?</strong></a></h2>
         </section>
+    </div>
+    <section id="one" class="wrapper special">
+        <div class="tilt">
+            {% for b in blist %}
+                <a href="/?{{ b }}" class="button alt big">{{ b }}</a>
+            {% endfor %}
+        </div>
 
-        <section id = "one" class="wrapper special">
-            <a href="/?BA" class="button alt big">BA</a>
-            <a href="/?GB" class="button alt big">GB</a>
-            <a href="/?SF" class="button alt big">SF</a>
-            <a href="/?MS" class="button alt big">MS</a>
 
-            
-            <div class = "inner">
-            {% if rooms1 %}     
-                <p>These rooms are free in {{b}} on {{ts}}</p>
-            
+        <div class="inner tilt">
+            {% if rooms1 %}
+                <p>These rooms are free in {{ b }} on {{ ts }}</p>
+
                 <ul class="actions">
                     {% for item in rooms1|dictsort %}
-                        <li><a href="#" class="button disabled fit">{{item[0]}} : {{item[1]}} hr</a></li>
+                        <li><a href="#" class="button disabled fit">{{ item[0] }} : {{ item[1] }} hr</a></li>
                     {% endfor %}
                 </ul>
             {% else %}
                 <p>Sorry, no rooms are free right now.</p>
             {% endif %}
-                
+
             {% if rooms2 %}
                 <p>These rooms will be free in the next hour</p>
-                <ul class="actions">
+                <ul class="actions ">
                     {% for item in rooms2|dictsort %}
-                        <li><a href="#" class="button disabled fit">{{item[0]}} : {{item[1]}} hr</a></li> 
+                        <li><a href="#" class="button disabled fit">{{ item[0] }} : {{ item[1] }} hr</a></li>
                     {% endfor %}
-                </ul> 
+                </ul>
             {% else %}
                 <p>Sorry, no rooms will be free in the next hour</p>
             {% endif %}
-                    
-                    
-        </section>
 
-  
+
+    </section>
+
+
     </body>
-    {% endblock %}
+{% endblock %}
 
 </html>
         
