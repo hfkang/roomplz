@@ -7,6 +7,7 @@ a pickle file. The actual download component is in osm.py, but can be
 set up as part of a weekly cronjob on Sundays. Just execute update.sh
 and it'll update the files for the upcoming week. 
 
-There *is* search functionality, but it's only half implemented and is 
-unlikely to ever be completed as it was never identified to be a useful
-feature. 
+## Installation Notes
+
+The server is deployed with zappa, which may have locale issues when installing. `export LC_ALL="en_US.UTF-8"` at the end of .bashrc should resolve it. 
+

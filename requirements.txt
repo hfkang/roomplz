@@ -1,0 +1,5 @@
+flask
+beautifulsoup4
+zappa
+flask-s3
+requests

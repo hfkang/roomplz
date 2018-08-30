@@ -1,23 +1,25 @@
-import pickle,datetime, os
+import json,datetime, boto3
 from flask import Flask,render_template,request,redirect,url_for,make_response
+from flask_s3 import FlaskS3
 app = Flask(__name__)
-app.debug = True
+app.config['FLASKS3_BUCKET_NAME'] = 'roomplz-assets'
+s3 = FlaskS3(app)
 
-@app.route("/R")
-@app.route("/r")
-@app.route("/RStudio")
-@app.route("/rstudio")
-@app.route("/stats")
-def arr():
-    return redirect("http://toastedsesa.me:8787")
 
 def room_plz(b,d,t):
-    building = b
+
     time = t  
     response = []
-    os.chdir('/app/roomplz')
-    with open(b+"_organized",'rb') as f:
-        availability = pickle.load(f)
+
+    filename = b + "_organized.json"
+    filepath = '/tmp/' + filename
+
+    client = boto3.client('s3')
+    client.download_file('roomplz-data', filename, filepath)
+
+    with open(filepath,'r') as f:
+        availability = json.load(f)
+
     if time>=7 and time <= 22:
         response = availability[d][time-7]
     return response #response is a dictionary whose keys are the room numbers, and values are the duration 
@@ -28,10 +30,10 @@ def auth():
         return render_template('login.html') 
     else:
         #process login data
-        if request.form['pswd'] == 'potato salad':
+        if 'pswd' in request.form and request.form['pswd'] == 'potato salad':
             #successful authentication 
             resp = app.make_response(redirect('/'))
-            resp.set_cookie('auth',max_age=15000000,domain='.toastedsesa.me',value='potato horse banana orange sloth')
+            resp.set_cookie('auth',max_age=15000000,value='potato horse banana orange sloth')
             return resp
         else:
             return render_template('login.html')    
@@ -43,37 +45,6 @@ def check_auth():
     else:
         return None
 
-@app.route('/search',methods=['GET'])
-def search():
-
-    if check_auth():
-        return check_auth()
-    if 'query' not in request.args:
-        query = ""
-    else: 
-        query = request.args.get('query')
-
-    os.chdir('/app/roomplz')
-    campus = {} #this is beyond inefficient 
-    with open("SF_fulldata","rb") as f:
-        campus['SF'] = pickle.load(f)
-    with open("GB_fulldata","rb") as f:
-        campus['GB'] = pickle.load(f)
-    with open("BA_fulldata","rb") as f:
-        campus['BA'] = pickle.load(f)
-
-    listing = []
-
-    #the dictionaries are not indexed in [day][hour]
-    for day in range(7):
-        for hour in range(16):
-            for building in campus:
-                for room in campus[building]:
-                    booking = campus[building][room][hour][day]
-                    if query.upper() in booking: 
-                        listing.append((booking,building,room,hour,day+7))
-
-    return render_template('search.html',results=listing)
 
 
 @app.route('/',methods=['GET'])
