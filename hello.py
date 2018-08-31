@@ -6,6 +6,8 @@ from osm import blist
 
 app = Flask(__name__)
 app.config['FLASKS3_BUCKET_NAME'] = 'roomplz-assets'
+app.config['FLASKS3_BUCKET_DOMAIN'] = 's3-us-west-2.amazonaws.com'
+app.config['FLASKS3_FORCE_MIMETYPE'] = True
 s3 = FlaskS3(app)
 
 

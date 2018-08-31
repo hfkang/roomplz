@@ -41,7 +41,7 @@ def store_organized(building_name, building_data):
 
 def main(args):
     
-    if "-d" == args[1]:
+    if "-d" in args:
         if "GB" == args[2]:
             print("Will download GB")
             download("GB")
@@ -54,7 +54,8 @@ def main(args):
         if "MS" == args[2]:
             print("Will download MS")
             download("MS")
-    if "--all" == args[1]:
+
+    else:
         for b in blist:
             download(b)
 
@@ -135,8 +136,7 @@ def loop_room(building,room_list):
     base_url = 'https://www.ace.utoronto.ca/ws/f?p=200:5:::::P5_BLDG,P5_ROOM,P5_CALENDAR_DATE:'
 
     i = datetime.datetime.now()
-    # date = i.strftime("%Y%m%d")
-    date = "20181024"
+    date = i.strftime("%Y%m%d")
     building_data = {}
     # This dictionary holds the arrays that show a room's schedule this week
     
