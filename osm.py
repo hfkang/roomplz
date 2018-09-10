@@ -5,7 +5,7 @@ import boto3
 bucket = None
 
 
-blist = ['BA','SF','GB','MS','RS','WB','MP']
+blist = ['BA','SF','GB','MS','RS','WB','MP','MY']
 
 def search(query):
     campus = {}
@@ -35,29 +35,13 @@ def store_organized(building_name, building_data):
 
 
     client = boto3.client('s3')
-    client.upload_file(filepath, 'roomplz-data', filename)
+    client.upload_file(filepath, 'roomplz-data', filename, ExtraArgs={'ContentType': 'application/json'})
 
     print("Done uploading " + filename)
 
-def main(args):
-    
-    if "-d" in args:
-        if "GB" == args[2]:
-            print("Will download GB")
-            download("GB")
-        if "BA" == args[2]:
-            print("Will download BA")
-            download("BA")
-        if "SF" == args[2]:
-            print("Will download SF")
-            download("SF")   
-        if "MS" == args[2]:
-            print("Will download MS")
-            download("MS")
-
-    else:
-        for b in blist:
-            download(b)
+def main():
+    for b in blist:
+        download(b)
 
 
 def nitialize():
@@ -203,7 +187,7 @@ def init_s3():
 
 
 if __name__=="__main__":
-    main(sys.argv)
+    main()
 #nitialize()
 
     # init_s3()

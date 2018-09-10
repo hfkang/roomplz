@@ -1,4 +1,6 @@
-import json,datetime, boto3
+import json, boto3
+from datetime import datetime
+import pytz
 from flask import Flask,render_template,request,redirect,url_for,make_response
 from flask_s3 import FlaskS3
 from osm import blist
@@ -16,7 +18,7 @@ def examsched():
     return render_template('examsched.html')
 
 def room_plz(b,d,t):
-
+    print("downloading data for " + b)
     time = t  
     response = []
 
@@ -51,6 +53,29 @@ def check_auth():
     if not ("auth" in request.cookies and request.cookies['auth'] == 'potato horse banana orange sloth'):
         return redirect(url_for('auth'))
 
+@app.route('/room', methods=['GET'], defaults={'b_code':'BA'})
+@app.route('/room/<b_code>', methods=['GET'] )
+def room(b_code):
+    utc = datetime.now(pytz.utc)
+    ct = utc.astimezone(pytz.timezone('US/Eastern'))
+
+    time = ct.hour
+    day = ct.weekday()
+    b = b_code
+
+
+    if "TEST" in "hello":
+        b = request.args.get('building')
+        time = int(request.args.get('time'))
+        # day = int(request.args.get('day'))
+        day = ct.day
+        ct = datetime(ct.year,ct.month,day,hour = time)
+
+    ts = ct.strftime("%A, %B, %d %I:%M%p")
+    rooms1 = room_plz(b,day,time)
+    rooms2 = room_plz(b,day,time+1)
+
+    return render_template('layout.html',b=b,ts=ts,rooms1=rooms1,rooms2=rooms2,blist = blist)
 
 
 @app.route('/',methods=['GET'])
@@ -60,20 +85,24 @@ def home_page():
     if check_auth():
         return check_auth()
 
+    return redirect(url_for('room'))
+
     q_s = request.query_string.decode('utf-8')
-    ct = datetime.datetime.now() 
-    time = ct.hour  
-    day = ct.weekday() 
+    utc = datetime.now(pytz.utc)
+    ct = utc.astimezone(pytz.timezone('US/Eastern'))
+
+    time = ct.hour
+    day = ct.weekday()
     b = 'BA'
     if q_s in blist:
         b = q_s
     if "TEST" in q_s:
         b = request.args.get('building')
         time = int(request.args.get('time'))
-        day = int(request.args.get('day'))
-        ct = datetime.datetime(ct.year,ct.month,day,hour = time)
-        day = ct.weekday()
-     
+        # day = int(request.args.get('day'))
+        day = ct.day
+        ct = datetime(ct.year,ct.month,day,hour = time)
+
     ts = ct.strftime("%A, %B, %d %I:%M%p")
     rooms1 = room_plz(b,day,time)
     rooms2 = room_plz(b,day,time+1)
